@@ -4,17 +4,26 @@
  */
 package com.mycompany.kebunappgui;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.Vector;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ibadj
  */
 public class KebunTambahPesanan extends javax.swing.JFrame {
-
-    /**
-     * Creates new form KebunTambahPesanan
-     */
+    private Vector<Vector> dataKomoditi;
+    private Vector<Vector> dataPelanggan;
+    
     public KebunTambahPesanan() {
         initComponents();
+        loadData();
     }
 
     /**
@@ -27,24 +36,29 @@ public class KebunTambahPesanan extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
-        jButton6 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jLabel6 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jLabel7 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
+        javax.swing.JPanel jPanel1 = new javax.swing.JPanel();
+        javax.swing.JLabel jLabel2 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel3 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel4 = new javax.swing.JLabel();
+        dropdownKomoditi = new javax.swing.JComboBox<>();
+        javax.swing.JButton BackButton = new javax.swing.JButton();
+        javax.swing.JLabel jLabel5 = new javax.swing.JLabel();
+        dropdownPelanggan = new javax.swing.JComboBox<>();
+        javax.swing.JLabel jLabel6 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel7 = new javax.swing.JLabel();
+        javax.swing.JButton TambahPesananButton = new javax.swing.JButton();
+        javax.swing.JButton ClearButton = new javax.swing.JButton();
+        javax.swing.JLabel jLabel8 = new javax.swing.JLabel();
+        TfQuantity = new javax.swing.JTextField();
+        TfHargapcs = new javax.swing.JTextField();
+        TfTotalharga = new javax.swing.JTextField();
+        javax.swing.JButton DeleteTabelHistory = new javax.swing.JButton();
+        javax.swing.JScrollPane jScrollPane4 = new javax.swing.JScrollPane();
+        TabelHistory = new javax.swing.JTable();
+        javax.swing.JButton SelesaiTabelPesanan = new javax.swing.JButton();
+        javax.swing.JScrollPane jScrollPane5 = new javax.swing.JScrollPane();
+        TabelPesanan = new javax.swing.JTable();
+        javax.swing.JButton DeleteTabelPesanan = new javax.swing.JButton();
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -52,6 +66,15 @@ public class KebunTambahPesanan extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 255, 153));
+        setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(153, 255, 153));
 
@@ -63,94 +86,187 @@ public class KebunTambahPesanan extends javax.swing.JFrame {
 
         jLabel4.setText("Kuantitas");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        dropdownKomoditi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        dropdownKomoditi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                dropdownKomoditiActionPerformed(evt);
             }
         });
 
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/kebunappgui/back.png"))); // NOI18N
-        jButton6.setText("Back");
+        BackButton.setText("Back");
+        BackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackButtonActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Nama Pelanggan");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        dropdownPelanggan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        dropdownPelanggan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+                dropdownPelangganActionPerformed(evt);
             }
         });
 
         jLabel6.setText("Harga/pcs");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
         jLabel7.setText("Total Harga");
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        TambahPesananButton.setBackground(new java.awt.Color(0, 153, 153));
+        TambahPesananButton.setForeground(new java.awt.Color(255, 255, 255));
+        TambahPesananButton.setText("+ Tambah Pesanan");
+        TambahPesananButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TambahPesananButtonActionPerformed(evt);
+            }
+        });
 
-        jButton1.setBackground(new java.awt.Color(0, 153, 153));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("+ Tambah Pesanan");
-
-        jButton2.setBackground(new java.awt.Color(255, 0, 51));
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Clear");
+        ClearButton.setBackground(new java.awt.Color(255, 0, 51));
+        ClearButton.setForeground(new java.awt.Color(255, 255, 255));
+        ClearButton.setText("Clear");
+        ClearButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ClearButtonActionPerformed(evt);
+            }
+        });
 
         jLabel8.setText("Manajemen Kebun \\ Tambah Pesanan");
+
+        TfQuantity.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                TfQuantityKeyReleased(evt);
+            }
+        });
+
+        TfHargapcs.setEditable(false);
+
+        TfTotalharga.setEditable(false);
+
+        DeleteTabelHistory.setText("Delete");
+        DeleteTabelHistory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteTabelHistoryActionPerformed(evt);
+            }
+        });
+
+        TabelHistory.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nama Komoditi", "Kuantitas", "Harga/pcs", "Total Harga", "Nama Pelanggan"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, true, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(TabelHistory);
+
+        SelesaiTabelPesanan.setText("Selesai");
+        SelesaiTabelPesanan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SelesaiTabelPesananActionPerformed(evt);
+            }
+        });
+
+        TabelPesanan.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nama Komoditi", "Kuantitas", "Harga/pcs", "Total Harga", "Nama Pelanggan"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane5.setViewportView(TabelPesanan);
+
+        DeleteTabelPesanan.setText("Delete");
+        DeleteTabelPesanan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteTabelPesananActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(110, 110, 110)
+                .addComponent(BackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(195, 195, 195)
                 .addComponent(jLabel2)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(TfQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(dropdownKomoditi, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(dropdownPelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel6)
+                                            .addComponent(TfHargapcs, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(36, 36, 36)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(TfTotalharga, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGap(47, 47, 47)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jLabel4)
+                                .addGap(22, 22, 22))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(197, 197, 197)
-                        .addComponent(jButton1)
+                        .addGap(102, 102, 102)
+                        .addComponent(TambahPesananButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(ClearButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel8)))
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(SelesaiTabelPesanan, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(DeleteTabelPesanan, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(DeleteTabelHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addContainerGap(411, Short.MAX_VALUE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(16, 16, 16)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton6)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2)))
-                .addGap(18, 18, 18)
+                .addComponent(BackButton)
+                .addGap(33, 33, 33)
                 .addComponent(jLabel8)
                 .addGap(64, 64, 64)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -158,25 +274,41 @@ public class KebunTambahPesanan extends javax.swing.JFrame {
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dropdownKomoditi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TfQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addGap(3, 3, 3)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TfHargapcs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TfTotalharga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addComponent(dropdownPelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(54, 54, 54))
+                    .addComponent(TambahPesananButton)
+                    .addComponent(ClearButton))
+                .addContainerGap(208, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addGap(40, 40, 40)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SelesaiTabelPesanan)
+                    .addComponent(DeleteTabelPesanan))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(DeleteTabelHistory)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(110, 110, 110)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(239, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -191,16 +323,214 @@ public class KebunTambahPesanan extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void dropdownKomoditiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dropdownKomoditiActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_dropdownKomoditiActionPerformed
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+    private void dropdownPelangganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dropdownPelangganActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
+    }//GEN-LAST:event_dropdownPelangganActionPerformed
 
+    private void TambahPesananButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TambahPesananButtonActionPerformed
+        String komoditi = (String) dropdownKomoditi.getSelectedItem();
+        int quantity = Integer.parseInt(TfQuantity.getText());
+        double pricePerPcs = Double.parseDouble(TfHargapcs.getText());
+        double totalPrice = Double.parseDouble(TfTotalharga.getText());
+        String buyer = (String) dropdownPelanggan.getSelectedItem();
+
+        DefaultTableModel model = (DefaultTableModel) TabelPesanan.getModel();
+        model.addRow(new Object[]{komoditi, quantity, pricePerPcs, totalPrice, buyer});
+
+        clearFields();
+    }//GEN-LAST:event_TambahPesananButtonActionPerformed
+
+    private void TfQuantityKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TfQuantityKeyReleased
+        updateTotalPrice();
+    }//GEN-LAST:event_TfQuantityKeyReleased
+
+    private void ClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearButtonActionPerformed
+        clearFields();
+    }//GEN-LAST:event_ClearButtonActionPerformed
+
+    private void DeleteTabelPesananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteTabelPesananActionPerformed
+        int row =TabelPesanan.getSelectedRow();
+       
+       if (row < 0){
+           JOptionPane.showMessageDialog(this, "Tidak ada baris yang di-select", "Pilih baris", JOptionPane.ERROR_MESSAGE);
+       } else {
+           DefaultTableModel model = (DefaultTableModel) TabelPesanan.getModel();
+           model.removeRow(row);
+       }
+    }//GEN-LAST:event_DeleteTabelPesananActionPerformed
+
+    private void SelesaiTabelPesananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelesaiTabelPesananActionPerformed
+        // Get the selected row index
+    int selectedRowIndex = TabelPesanan.getSelectedRow();
+    
+    // Check if a row is actually selected
+    if (selectedRowIndex >= 0) {
+        // Get the model of TabelPesanan
+        DefaultTableModel pesananModel = (DefaultTableModel) TabelPesanan.getModel();
+        
+        // Get the selected row data
+        Vector<Object> rowData = (Vector<Object>) pesananModel.getDataVector().elementAt(selectedRowIndex);
+        
+        // Remove the selected row from TabelPesanan
+        pesananModel.removeRow(selectedRowIndex);
+        
+        // Get the model of TabelHistory
+        DefaultTableModel historyModel = (DefaultTableModel) TabelHistory.getModel();
+        
+        // Add the row data to TabelHistory
+        historyModel.addRow(rowData.toArray());
+    } else {
+        JOptionPane.showMessageDialog(this, "Tidak ada baris yang di-select", "Pilih baris", JOptionPane.WARNING_MESSAGE);
+    }
+    }//GEN-LAST:event_SelesaiTabelPesananActionPerformed
+
+    private void DeleteTabelHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteTabelHistoryActionPerformed
+        int row =TabelHistory.getSelectedRow();
+       
+       if (row < 0){
+           JOptionPane.showMessageDialog(this, "Tidak ada baris yang di-select", "Pilih baris", JOptionPane.ERROR_MESSAGE);
+       } else {
+           DefaultTableModel model = (DefaultTableModel) TabelHistory.getModel();
+           model.removeRow(row);
+       }
+    }//GEN-LAST:event_DeleteTabelHistoryActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+    saveTableData(TabelPesanan, "TabelPesanan.bin");
+    saveTableData(TabelHistory, "TabelHistory.bin");
+}
+
+private void saveTableData(javax.swing.JTable table, String fileName) {
+    DefaultTableModel model = (DefaultTableModel) table.getModel();
+    Vector<Vector> data = model.getDataVector();
+    
+    try {
+        FileOutputStream file = new FileOutputStream(fileName);
+        ObjectOutputStream output = new ObjectOutputStream(file);
+        
+        output.writeObject(data);
+        
+        output.close();
+        file.close();
+    } catch (Exception ex) {
+        ex.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Failed to save data: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    }//GEN-LAST:event_formWindowClosing
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+    loadTableData(TabelPesanan, "TabelPesanan.bin");
+    loadTableData(TabelHistory, "TabelHistory.bin");
+}
+
+private void loadTableData(javax.swing.JTable table, String fileName) {
+    try {
+        FileInputStream file = new FileInputStream(fileName);
+        ObjectInputStream input = new ObjectInputStream(file);
+        
+        Vector<Vector> data = (Vector<Vector>) input.readObject();
+        
+        input.close();
+        file.close();
+        
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        for (Vector row : data) {
+            model.addRow(row.toArray());
+        }
+    } catch (Exception ex) {
+        ex.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Failed to load data: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    }//GEN-LAST:event_formWindowOpened
+
+    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
+    saveTableData(TabelPesanan, "TabelPesanan.bin");
+    saveTableData(TabelHistory, "TabelHistory.bin");
+    KebunWindow KebunWindow = new KebunWindow();
+
+    // Set the new window to be visible
+    KebunWindow.setVisible(true);
+
+    // Dispose of the current window (CurrentWindow.java)
+    this.dispose();
+    }//GEN-LAST:event_BackButtonActionPerformed
+
+    private void loadData(){
+try {
+    // Load Komoditi data
+    FileInputStream fileKomoditi = new FileInputStream("TabelKomoditi.bin");
+    ObjectInputStream inputKomoditi = new ObjectInputStream(fileKomoditi);
+    dataKomoditi = (Vector<Vector>) inputKomoditi.readObject();
+    inputKomoditi.close();
+    fileKomoditi.close();
+
+    // Populate Komoditi dropdown
+    DefaultComboBoxModel<String> komoditiModel = new DefaultComboBoxModel<>();
+    for (Vector row : dataKomoditi) {
+        komoditiModel.addElement(row.get(0).toString()); // Assuming first column is the name
+    }
+    dropdownKomoditi.setModel(komoditiModel);
+
+    // Load Pelanggan data
+    FileInputStream filePelanggan = new FileInputStream("TabelPelanggan.bin");
+    ObjectInputStream inputPelanggan = new ObjectInputStream(filePelanggan);
+    dataPelanggan = (Vector<Vector>) inputPelanggan.readObject();
+    inputPelanggan.close();
+    filePelanggan.close();
+
+    // Populate Buyer dropdown
+    DefaultComboBoxModel<String> pelangganModel = new DefaultComboBoxModel<>();
+    for (Vector row : dataPelanggan) {
+        pelangganModel.addElement(row.get(0).toString()); 
+    }
+    dropdownPelanggan.setModel(pelangganModel);
+
+} catch (Exception ex) {
+    ex.printStackTrace();
+    JOptionPane.showMessageDialog(this, "Gagal mengisi data: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+}
+
+    }
+        private void updateTotalPrice() {
+        try {
+            int quantity = Integer.parseInt(TfQuantity.getText());
+            String selectedKomoditi = (String) dropdownKomoditi.getSelectedItem();
+            double pricePerPcs = getPricePerPcs(selectedKomoditi);
+            double totalPrice = quantity * pricePerPcs;
+            TfTotalharga.setText(String.valueOf(totalPrice));
+            TfHargapcs.setText(String.valueOf(pricePerPcs));
+        } catch (NumberFormatException e) {
+            // Handle case where quantityField does not contain a valid number
+            TfTotalharga.setText("");
+        }
+    }
+        
+        private double getPricePerPcs(String komoditi) {
+        for (Vector row : dataKomoditi) {
+            if (row.get(0).equals(komoditi)) {
+                return Double.parseDouble(row.get(1).toString()); // Assuming third column is the price
+            }
+        }
+        return 0.0;
+    }
+        
+        private void clearFields() {
+        dropdownKomoditi.setSelectedIndex(0);
+        TfQuantity.setText("");
+        TfHargapcs.setText("");
+        TfTotalharga.setText("");
+        dropdownPelanggan.setSelectedIndex(0);
+    }
+        
+        
+        
     /**
      * @param args the command line arguments
      */
@@ -237,24 +567,13 @@ public class KebunTambahPesanan extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JTable TabelHistory;
+    private javax.swing.JTable TabelPesanan;
+    private javax.swing.JTextField TfHargapcs;
+    private javax.swing.JTextField TfQuantity;
+    private javax.swing.JTextField TfTotalharga;
+    private javax.swing.JComboBox<String> dropdownKomoditi;
+    private javax.swing.JComboBox<String> dropdownPelanggan;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
