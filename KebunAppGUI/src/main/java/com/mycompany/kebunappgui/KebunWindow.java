@@ -181,10 +181,10 @@ public class KebunWindow extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
     // Create an instance of MainWindow
-    KebunDaftarKomoditi KebunDaftarKomoditi = new KebunDaftarKomoditi();
+    Kebun_DaftarKomoditi Kebun_DaftarKomoditi = new Kebun_DaftarKomoditi();
 
     // Set the new window to be visible
-    KebunDaftarKomoditi.setVisible(true);
+    Kebun_DaftarKomoditi.setVisible(true);
 
     // Dispose of the current window (CurrentWindow.java)
     this.dispose();
@@ -192,10 +192,10 @@ public class KebunWindow extends javax.swing.JFrame {
 
     private void DaftarPelangganButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DaftarPelangganButtonActionPerformed
     // Create an instance of MainWindow
-    KebunDaftarPelanggan KebunDaftarPelanggan = new KebunDaftarPelanggan();
+    Kebun_DaftarPelanggan Kebun_DaftarPelanggan = new Kebun_DaftarPelanggan();
 
     // Set the new window to be visible
-    KebunDaftarPelanggan.setVisible(true);
+    Kebun_DaftarPelanggan.setVisible(true);
 
     // Dispose of the current window (CurrentWindow.java)
     this.dispose();
