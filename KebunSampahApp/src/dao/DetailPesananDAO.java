@@ -25,7 +25,7 @@ public class DetailPesananDAO {
             statement.setString(1, detail.getPesananId());
             statement.setString(2, detail.getKomoditiNama());
             statement.setDouble(3, detail.getKomoditiHarga());
-            statement.setInt(4, detail.getJumlah());
+            statement.setDouble(4, detail.getJumlah());
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -47,7 +47,7 @@ public class DetailPesananDAO {
                 int id = resultSet.getInt("ID");
                 String komoditiNama = resultSet.getString("Komoditi_nama");
                 double komoditiHarga = resultSet.getDouble("Komoditi_harga");
-                int jumlah = resultSet.getInt("Jumlah");
+                double jumlah = resultSet.getDouble("Jumlah"); // Changed from int to double
 
                 DetailPesanan detail = new DetailPesanan(id, pesananId, komoditiNama, komoditiHarga, jumlah);
                 details.add(detail);

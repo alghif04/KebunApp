@@ -9,14 +9,14 @@ package entities;
  * @author ibadj
  */
 public class DetailPesanan {
-     private int id;
+    private int id;
     private String pesananId;
     private String komoditiNama;
     private double komoditiHarga;
-    private int jumlah;
+    private double jumlah; // Changed from int to double
 
     // Constructor
-    public DetailPesanan(int id, String pesananId, String komoditiNama, double komoditiHarga, int jumlah) {
+    public DetailPesanan(int id, String pesananId, String komoditiNama, double komoditiHarga, double jumlah) {
         this.id = id;
         this.pesananId = pesananId;
         this.komoditiNama = komoditiNama;
@@ -57,20 +57,20 @@ public class DetailPesanan {
         this.komoditiHarga = komoditiHarga;
     }
 
-    public int getJumlah() {
+    public double getJumlah() { // Changed from int to double
         return jumlah;
     }
 
-    public void setJumlah(int jumlah) {
+    public void setJumlah(double jumlah) { // Changed from int to double
         this.jumlah = jumlah;
     }
+
     public double getTotalHarga() {
         return komoditiHarga * jumlah;
     }
 
-@Override
-public String toString() {
-    return komoditiNama + " - Rp " + komoditiHarga + " Quantity " + jumlah;
-}
-
+    @Override
+    public String toString() {
+        return komoditiNama + " - Rp " + komoditiHarga + " Quantity " + jumlah;
+    }
 }

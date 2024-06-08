@@ -16,6 +16,8 @@ import java.sql.ResultSet;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Rectangle;
@@ -32,6 +34,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
+import javax.swing.JOptionPane;
 
 
 /*
@@ -294,137 +297,161 @@ public class ManageCommoditiesDialog extends JDialog  {
     }//GEN-LAST:event_DeleteButtonActionPerformed
 
     private void btnConvertToPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConvertToPDFActionPerformed
-// Create a new document
-Document document = new Document();
+        // Create a new document
+        Document document = new Document(PageSize.A4, 50, 50, 30, 50); // Adjust margins as needed
 
-try {
-    // Set the PDF file name to be the order ID
-    String fileName = "order_invoices/" + pesananId + ".pdf";  // Assuming 'order_invoices' is the directory name
-    File file = new File(fileName);
-    file.getParentFile().mkdirs();  // Create directories if they don't exist
-    PdfWriter.getInstance(document, new FileOutputStream(fileName));
-
-    // Open the document
-    document.open();
-
-    // Fetch order details
-    List<DetailPesanan> details = detailPesananDAO.getDetailsByPesananId(pesananId);
-    PesananDAO pesananDAO = new PesananDAO(DatabaseConnection.getConnection());
-    Pesanan pesanan = pesananDAO.getPesananById(pesananId);  // Fetch the order details from the database
-
-    // Fetch customer details based on pesanan_nama (foreign key)
-    PelangganDAO pelangganDAO = new PelangganDAO();;
-    Pelanggan pelanggan = pelangganDAO.getPelangganByNama(pesanan.getPesananNama()); // Assuming you have this method in PelangganDAO
-
-    // Create table for layout
-    PdfPTable mainTable = new PdfPTable(2);
-    mainTable.setWidthPercentage(100);
-
-    // Create cell for customer details
-    PdfPCell customerCell = new PdfPCell();
-    customerCell.setBorder(PdfPCell.NO_BORDER);
-    customerCell.addElement(new Paragraph("Customer Name: " + pelanggan.getNama()));
-    customerCell.addElement(new Paragraph("Alamat: " + pelanggan.getAlamat()));
-    customerCell.addElement(new Paragraph("No. Telp: " + pelanggan.getNoTelp()));
-    mainTable.addCell(customerCell);
-
-    // Create cell for order details
-    PdfPCell orderCell = new PdfPCell();
-    orderCell.setBorder(PdfPCell.NO_BORDER);
-    orderCell.addElement(new Paragraph("Order ID: " + pesananId));
-    orderCell.addElement(new Paragraph("Date: " + java.time.LocalDate.now()));
-    mainTable.addCell(orderCell);
-
-    // Add the main table to the document
-    document.add(mainTable);
-
-    // Add space between customer contact details and table
-    document.add(new Paragraph(" "));
-
-    // Add table headers
-    PdfPTable table = new PdfPTable(4); // 4 columns: Komoditi, Harga, Jumlah, Total Harga
-    table.setWidthPercentage(100); // Set table width to 100% of the page
-    table.addCell("Komoditi");
-    table.addCell("Harga");
-    table.addCell("Jumlah");
-    table.addCell("Total Harga");
-
-    double grandTotal = 0.0;
-    for (DetailPesanan detail : details) {
-        String komoditiNama = detail.getKomoditiNama();
-        double harga = detail.getKomoditiHarga();
-        int jumlah = detail.getJumlah();
-        double totalHargaItem = harga * jumlah;
-        grandTotal += totalHargaItem;
-
-        // Add order details to table
-        table.addCell(komoditiNama);
-        table.addCell(String.valueOf(harga));
-        table.addCell(String.valueOf(jumlah));
-        table.addCell(String.valueOf(totalHargaItem));
-    }
-
-    // Add the table to the document
-    document.add(table);
-
-    // Add grand total
-    document.add(new Paragraph(" "));
-    document.add(new Paragraph("Grand Total: " + String.format("%.2f", grandTotal)));
-
-    // Add space between table and payment details
-    document.add(new Paragraph(" "));
-
-    // Add payment details
-    document.add(new Paragraph("Pembayaran"));
-    document.add(new Paragraph("A/n John Doe"));
-    document.add(new Paragraph("Central Bank - 12345678910"));
-
-    // Close the document
-    document.close();
-
-    System.out.println("PDF created successfully. Location: " + fileName);
-
-    // Automatically open the PDF
-    if (Desktop.isDesktopSupported()) {
         try {
-            Desktop.getDesktop().open(file);
-        } catch (IOException e) {
+            // Set the PDF file name to be the order ID
+            String fileName = "order_invoices/" + pesananId + ".pdf";  // Assuming 'order_invoices' is the directory name
+            File file = new File(fileName);
+            file.getParentFile().mkdirs();  // Create directories if they don't exist
+            PdfWriter.getInstance(document, new FileOutputStream(fileName));
+
+            // Open the document
+            document.open();
+
+            // Fetch order details
+            List<DetailPesanan> details = detailPesananDAO.getDetailsByPesananId(pesananId);
+            PesananDAO pesananDAO = new PesananDAO(DatabaseConnection.getConnection());
+            Pesanan pesanan = pesananDAO.getPesananById(pesananId);  // Fetch the order details from the database
+
+            // Fetch customer details based on pesanan_nama (foreign key)
+            PelangganDAO pelangganDAO = new PelangganDAO();
+            Pelanggan pelanggan = pelangganDAO.getPelangganByNama(pesanan.getPesananNama()); // Assuming you have this method in PelangganDAO
+
+            // Create table for layout
+            PdfPTable mainTable = new PdfPTable(2);
+            mainTable.setWidthPercentage(100);
+
+            // Create cell for customer details
+            PdfPCell customerCell = new PdfPCell();
+            customerCell.setBorder(PdfPCell.NO_BORDER);
+            customerCell.addElement(new Paragraph("Kepada:"));
+            customerCell.addElement(new Paragraph("Nama Pelanggan: " + pelanggan.getNama()));
+            customerCell.addElement(new Paragraph("Alamat: " + pelanggan.getAlamat()));
+            customerCell.addElement(new Paragraph("No. Telp: " + pelanggan.getNoTelp()));
+            mainTable.addCell(customerCell);
+
+            // Create cell for order details
+            PdfPCell orderCell = new PdfPCell();
+            orderCell.setBorder(PdfPCell.NO_BORDER);
+            Paragraph idParagraph = new Paragraph("ID: " + pesananId);
+            idParagraph.setAlignment(Element.ALIGN_RIGHT); // Justify to the right
+            orderCell.addElement(idParagraph);
+
+            Paragraph dateParagraph = new Paragraph("Tanggal: " + java.time.LocalDate.now());
+            dateParagraph.setAlignment(Element.ALIGN_RIGHT); // Justify to the right
+            orderCell.addElement(dateParagraph);
+
+            mainTable.addCell(orderCell);
+
+            // Add the main table to the document
+            document.add(mainTable);
+
+            // Add space between customer contact details and table
+            document.add(new Paragraph(" "));
+            document.add(new Paragraph(" "));
+            document.add(new Paragraph(" "));
+            
+
+            // Add table headers
+            PdfPTable table = new PdfPTable(4); // 4 columns: Komoditi, Harga, Jumlah, Total Harga
+            table.setWidthPercentage(100); // Set table width to 100% of the page
+            table.addCell("Komoditi");
+            table.addCell("Harga");
+            table.addCell("Jumlah");
+            table.addCell("Total Harga");
+
+            double grandTotal = 0.0;
+            for (DetailPesanan detail : details) {
+                String komoditiNama = detail.getKomoditiNama();
+                double harga = detail.getKomoditiHarga();
+                double jumlah = detail.getJumlah();
+                double totalHargaItem = harga * jumlah;
+                grandTotal += totalHargaItem;
+
+                // Add order details to table
+                table.addCell(komoditiNama);
+                table.addCell(String.valueOf(harga));
+                table.addCell(String.valueOf(jumlah));
+                table.addCell(String.valueOf(totalHargaItem));
+            }
+
+            // Add the table to the document
+            document.add(table);
+
+            // Add grand total
+            document.add(new Paragraph(" "));
+            document.add(new Paragraph("Grand Total: " + String.format("%.2f", grandTotal)));
+
+            // Add space between table and payment details
+            document.add(new Paragraph(" "));
+            document.add(new Paragraph(" ")); // Add additional space here
+
+            // Add payment details
+            document.add(new Paragraph("Pembayaran"));
+            document.add(new Paragraph("A/n John Doe"));
+            document.add(new Paragraph("Central Bank - 12345678910"));
+
+            // Adding space and John Doe's name in bold, underlined, and centered
+            document.add(new Paragraph(" "));
+            Paragraph johnDoeParagraph = new Paragraph("John Doe");
+            johnDoeParagraph.setAlignment(Element.ALIGN_CENTER);
+            johnDoeParagraph.getFont().setStyle(Font.BOLD | Font.UNDERLINE);
+            document.add(johnDoeParagraph);
+
+            // Adding the thank you note
+            Paragraph thankYouParagraph = new Paragraph("Terima kasih telah berbelanja di tempat kami");
+            thankYouParagraph.setAlignment(Element.ALIGN_CENTER);
+            document.add(thankYouParagraph);
+
+            // Close the document
+            document.close();
+
+            System.out.println("PDF created successfully. Location: " + fileName);
+
+            // Automatically open the PDF
+            if (Desktop.isDesktopSupported()) {
+                try {
+                    Desktop.getDesktop().open(file);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        } catch (DocumentException | IOException e) {
             e.printStackTrace();
         }
-    }
-
-} catch (DocumentException | IOException e) {
-    e.printStackTrace();
-}
-
     }//GEN-LAST:event_btnConvertToPDFActionPerformed
 private void addCommodity() {
     String selectedCommodity = comboBoxKomoditi.getSelectedItem().toString();
-    int quantity = Integer.parseInt(tfQuantity.getText());
+    double quantity = Double.parseDouble(tfQuantity.getText()); // Use double for quantity
 
     KomoditiDAO komoditiDAO = new KomoditiDAO();
     double komoditiHarga = komoditiDAO.getHargaFromSelectedCommodity(selectedCommodity);
+    double totalHarga = komoditiHarga * quantity; // Calculate the total price based on the quantity
 
     try (Connection connection = DatabaseConnection.getConnection()) {
         // Check if the commodity already exists for the same pesanan_id
-        String checkQuery = "SELECT jumlah FROM detailpesanan WHERE pesanan_id = ? AND komoditi_nama = ?";
+        String checkQuery = "SELECT jumlah, komoditi_harga FROM detailpesanan WHERE pesanan_id = ? AND komoditi_nama = ?";
         try (PreparedStatement checkStmt = connection.prepareStatement(checkQuery)) {
             checkStmt.setString(1, pesananId);
             checkStmt.setString(2, selectedCommodity);
             ResultSet resultSet = checkStmt.executeQuery();
 
             if (resultSet.next()) {
-                // Commodity exists, update the quantity
-                int existingQuantity = resultSet.getInt("jumlah");
-                int newQuantity = existingQuantity + quantity;
+                // Commodity exists, update the quantity and price
+                double existingQuantity = resultSet.getDouble("jumlah");
+                double newQuantity = existingQuantity + quantity;
 
-                String updateQuery = "UPDATE detailpesanan SET jumlah = ? WHERE pesanan_id = ? AND komoditi_nama = ?";
+                String updateQuery = "UPDATE detailpesanan SET jumlah = ?, komoditi_harga = ? WHERE pesanan_id = ? AND komoditi_nama = ?";
                 try (PreparedStatement updateStmt = connection.prepareStatement(updateQuery)) {
-                    updateStmt.setInt(1, newQuantity);
-                    updateStmt.setString(2, pesananId);
-                    updateStmt.setString(3, selectedCommodity);
+                    updateStmt.setDouble(1, newQuantity);
+                    updateStmt.setDouble(2, komoditiHarga);
+                    updateStmt.setString(3, pesananId);
+                    updateStmt.setString(4, selectedCommodity);
                     updateStmt.executeUpdate();
-                    System.out.println("Commodity quantity updated successfully!");
+                    System.out.println("Commodity quantity and price updated successfully!");
                 }
             } else {
                 // Commodity does not exist, insert a new row
@@ -433,7 +460,7 @@ private void addCommodity() {
                     insertStmt.setString(1, pesananId);
                     insertStmt.setString(2, selectedCommodity);
                     insertStmt.setDouble(3, komoditiHarga);
-                    insertStmt.setInt(4, quantity);
+                    insertStmt.setDouble(4, quantity);
                     insertStmt.executeUpdate();
                     System.out.println("Commodity added successfully!");
                 }
@@ -443,6 +470,8 @@ private void addCommodity() {
         e.printStackTrace();
     }
 }
+
+
 
 
 
@@ -486,13 +515,13 @@ private void populateTable(String pesananId) {
 
     List<DetailPesanan> details = detailPesananDAO.getDetailsByPesananId(pesananId);
 
-    Map<String, Integer> commodityQuantities = new HashMap<>();
+    Map<String, Double> commodityQuantities = new HashMap<>();
     Map<String, Double> commodityPrices = new HashMap<>();
     double grandTotal = 0.0;
 
     for (DetailPesanan detail : details) {
         String komoditiNama = detail.getKomoditiNama();
-        int jumlah = detail.getJumlah();
+        double jumlah = detail.getJumlah();
         double harga = detail.getKomoditiHarga();
 
         commodityPrices.put(komoditiNama, harga);
@@ -507,7 +536,7 @@ private void populateTable(String pesananId) {
     int macamKomoditiCount = commodityQuantities.size(); // Count of unique komoditi entries
 
     for (String komoditiNama : commodityQuantities.keySet()) {
-        int jumlah = commodityQuantities.get(komoditiNama);
+        double jumlah = commodityQuantities.get(komoditiNama);
         double harga = commodityPrices.get(komoditiNama);
         double totalHargaItem = harga * jumlah;
         grandTotal += totalHargaItem;
@@ -523,6 +552,7 @@ private void populateTable(String pesananId) {
     PesananDAO pesananDAO = new PesananDAO(DatabaseConnection.getConnection());
     pesananDAO.updatePesanan(pesananId, grandTotal, macamKomoditiCount);
 }
+
 
      private void checkAndDisableFieldsIfLunas() {
         // Retrieve the pesanan status from the database

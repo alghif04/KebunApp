@@ -269,7 +269,6 @@ System.out.println("New Komoditi: " + newKomoditi);
 boolean success = komoditiDAO.addKomoditi(newKomoditi);
 
 if (success) {
-    JOptionPane.showMessageDialog(this, "Komoditi added successfully.");
     populateTable(); // Refresh the table to show the new Komoditi
 } else {
     JOptionPane.showMessageDialog(this, "Failed to add Komoditi.", "Error", JOptionPane.ERROR_MESSAGE);
