@@ -20,6 +20,7 @@ public class Pesanan {
     private Date pesananTanggal;
     private String pesananMacamKomoditi;
     private double pesananTotalHarga;
+    private String pesananStatus;  // New attribute for status
 
     // Constructor
     public Pesanan(String pesananId, String pesananNama, Date pesananTanggal, String pesananMacamKomoditi, double pesananTotalHarga) {
@@ -28,7 +29,17 @@ public class Pesanan {
         this.pesananTanggal = pesananTanggal;
         this.pesananMacamKomoditi = pesananMacamKomoditi;
         this.pesananTotalHarga = pesananTotalHarga;
+        this.pesananStatus = "belum lunas"; // Default status
     }
+    public Pesanan(String pesananId, String pesananNama, Date pesananTanggal, String pesananMacamKomoditi, double pesananTotalHarga, String pesananStatus) {
+        this.pesananId = pesananId;
+        this.pesananNama = pesananNama;
+        this.pesananTanggal = pesananTanggal;
+        this.pesananMacamKomoditi = pesananMacamKomoditi;
+        this.pesananTotalHarga = pesananTotalHarga;
+        this.pesananStatus = pesananStatus;
+    }
+
 
     // Getters and setters
     public String getPesananId() {
@@ -69,6 +80,14 @@ public class Pesanan {
 
     public void setPesananTotalHarga(double pesananTotalHarga) {
         this.pesananTotalHarga = pesananTotalHarga;
+    }
+    
+     public String getPesananStatus() {
+        return pesananStatus;
+    }
+
+    public void setPesananStatus(String pesananStatus) {
+        this.pesananStatus = pesananStatus;
     }
 
     @Override
