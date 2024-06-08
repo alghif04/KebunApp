@@ -193,6 +193,21 @@ INSERT INTO `pesanan` (`Pesanan_id`, `Pesanan_nama`, `Pesanan_tanggal`, `Pesanan
 ('8/Kebun/06-2024', 'Anto Suprapto', '2024-06-15', 2, 92500, 'lunas'),
 ('9/Kebun/06-2024', 'Citra Purnama', '2024-06-16', 2, 38750, 'belum lunas');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `penjualan`
+--
+
+CREATE TABLE `penjualan` (
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `no_transaksi` VARCHAR(50) NOT NULL,
+  `tanggal` DATE NOT NULL,
+  `total_kg` DECIMAL(10,2) NOT NULL,
+  `total_biji` INT NOT NULL,
+  `total_penjualan` DECIMAL(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 --
 -- Indexes for dumped tables
 --
