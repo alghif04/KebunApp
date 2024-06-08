@@ -11,7 +11,11 @@ import java.util.List;
 import kebunsampahapp.DatabaseConnection;
 
 public class PelangganDAO {
+private Connection connection;
 
+    public PelangganDAO() {
+        this.connection = DatabaseConnection.getConnection();
+    }
     // Add a new pelanggan to the database
     public boolean addPelanggan(Pelanggan pelanggan) {
         String query = "INSERT INTO pelanggan (Pelanggan_nama, Pelanggan_alamat, Pelanggan_notelp) VALUES (?, ?, ?)";
@@ -69,6 +73,26 @@ public class PelangganDAO {
             e.printStackTrace();
             return false;
         }
+    }
+        public Pelanggan getPelangganByNama(String nama) {
+        Pelanggan pelanggan = null;
+        String query = "SELECT * FROM pelanggan WHERE Pelanggan_nama = ?";
+
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, nama);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                String alamat = resultSet.getString("Pelanggan_alamat");
+                String noTelp = resultSet.getString("Pelanggan_notelp");
+
+                pelanggan = new Pelanggan(nama, alamat, noTelp);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return pelanggan;
     }
     }
 

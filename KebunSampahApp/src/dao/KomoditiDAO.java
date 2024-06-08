@@ -73,5 +73,24 @@ public boolean deleteKomoditiByDetails(String nama, double harga, String satuan)
         return false;
     }
 }
+
+     public double getHargaFromSelectedCommodity(String komoditiNama) {
+        String query = "SELECT Komoditi_harga FROM komoditi WHERE Komoditi_nama = ?";
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setString(1, komoditiNama);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                return resultSet.getDouble("Komoditi_harga");
+            } else {
+                System.out.println("Commodity not found: " + komoditiNama);
+                return 0.0; // Default to 0 if commodity not found
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0.0; // Handle error or return a default value
+        }
+    }
 }
 
