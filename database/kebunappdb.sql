@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 09 Jun 2024 pada 14.53
--- Versi server: 10.4.32-MariaDB
--- Versi PHP: 8.2.12
+-- Waktu pembuatan: 09 Jun 2024 pada 15.19
+-- Versi server: 10.4.28-MariaDB
+-- Versi PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -149,6 +149,35 @@ INSERT INTO `komoditi` (`Komoditi_id`, `Komoditi_nama`, `Komoditi_harga`, `Komod
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `nasabah`
+--
+
+CREATE TABLE `nasabah` (
+  `Nasabah_ID` int(11) NOT NULL,
+  `Nasabah_NAMA` varchar(255) DEFAULT NULL,
+  `Nasabah_STATUS` varchar(255) DEFAULT NULL,
+  `Nasabah_NOMOR_RUMAH` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `nasabah`
+--
+
+INSERT INTO `nasabah` (`Nasabah_ID`, `Nasabah_NAMA`, `Nasabah_STATUS`, `Nasabah_NOMOR_RUMAH`) VALUES
+(10, 'Bayu', 'Kost', 27),
+(11, 'Rohan', 'Tetap', 20),
+(12, 'Rio', 'Tetap', 15),
+(13, 'Yuda', 'Kost', 38),
+(14, 'Lukman', 'Kontrak', 10),
+(15, 'Bobby', 'Tetap', 12),
+(16, 'Rizky', 'Kost', 21),
+(17, 'Mayhikal', 'Tetap', 43),
+(18, 'Diko', 'Kost', 52),
+(19, 'Zico', 'Tetap', 56);
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `panen`
 --
 
@@ -274,6 +303,35 @@ INSERT INTO `pesanan` (`Pesanan_id`, `Pesanan_nama`, `Pesanan_tanggal`, `Pesanan
 ('8/Kebun/06-2024', 'Anto Suprapto', '2024-06-15', 2, 92500, 'lunas'),
 ('9/Kebun/06-2024', 'Citra Purnama', '2024-06-16', 2, 38750, 'belum lunas');
 
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `setoran`
+--
+
+CREATE TABLE `setoran` (
+  `ID` int(11) NOT NULL,
+  `Tanggal_Setor` date DEFAULT NULL,
+  `Nama` varchar(255) DEFAULT NULL,
+  `Jenis` varchar(255) DEFAULT NULL,
+  `Harga_Satuan` int(11) DEFAULT NULL,
+  `kuantitas` double DEFAULT NULL,
+  `Penerimaan` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `setoran`
+--
+
+INSERT INTO `setoran` (`ID`, `Tanggal_Setor`, `Nama`, `Jenis`, `Harga_Satuan`, `kuantitas`, `Penerimaan`) VALUES
+(1, '2024-06-07', 'Bayu Rachmawan', 'Kardus', 10000, 4, 40000),
+(2, '2024-06-07', 'Bobby', 'Kertas Buram', 800, 3.5, 2800),
+(3, '2024-06-06', 'Rio', 'Kresek', 300, 5.5, 1650),
+(4, '2024-06-06', 'Mayhikal', 'HVS', 1800, 6, 10800),
+(5, '2024-06-15', 'Rohan', 'Majalah', 700, 2.5, 1750),
+(6, '2024-06-07', 'Rizky', 'Selang', 400, 2.5, 1000),
+(7, '2024-06-06', 'Lukman', 'Kresek', 300, 7.5, 2250);
+
 --
 -- Indexes for dumped tables
 --
@@ -285,10 +343,22 @@ ALTER TABLE `harga`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indeks untuk tabel `nasabah`
+--
+ALTER TABLE `nasabah`
+  ADD PRIMARY KEY (`Nasabah_ID`);
+
+--
 -- Indeks untuk tabel `penjualan_ke_bsis`
 --
 ALTER TABLE `penjualan_ke_bsis`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `setoran`
+--
+ALTER TABLE `setoran`
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- AUTO_INCREMENT untuk tabel yang dibuang
@@ -301,10 +371,22 @@ ALTER TABLE `harga`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
+-- AUTO_INCREMENT untuk tabel `nasabah`
+--
+ALTER TABLE `nasabah`
+  MODIFY `Nasabah_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
 -- AUTO_INCREMENT untuk tabel `penjualan_ke_bsis`
 --
 ALTER TABLE `penjualan_ke_bsis`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT untuk tabel `setoran`
+--
+ALTER TABLE `setoran`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
