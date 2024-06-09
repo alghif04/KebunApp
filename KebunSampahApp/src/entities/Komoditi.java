@@ -8,7 +8,7 @@ package entities;
  *
  * @author ibadj
  */
-public class Komoditi {
+public class Komoditi  {
        private String nama;
     private double harga;
     private String satuan;

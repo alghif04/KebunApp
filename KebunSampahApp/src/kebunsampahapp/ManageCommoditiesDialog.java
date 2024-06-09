@@ -31,10 +31,13 @@ import java.awt.Desktop;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
+import dao.KomoditiDAO;
 
 
 /*
@@ -504,6 +507,13 @@ private void addCommodity() {
         }
     }
 private void populateKomoditi() {
+    Collections.sort(komoditiList, new Comparator<Komoditi>() {
+        @Override
+        public int compare(Komoditi k1, Komoditi k2) {
+            return k1.getNama().compareTo(k2.getNama());
+        }
+    });
+
     comboBoxKomoditi.removeAllItems(); // Clear existing items in the dropdown
     for (Komoditi komoditi : komoditiList) {
         comboBoxKomoditi.addItem(komoditi.getNama()); // Add the name of the commodity to the dropdown

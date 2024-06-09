@@ -12,6 +12,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.JOptionPane;
@@ -328,28 +330,36 @@ if (selectedRow >= 0) {
      
     }//GEN-LAST:event_formWindowOpened
     private void populateTable() {
-        List<Komoditi> komoditiList = komoditiDAO.getAllKomoditi();
-        DefaultTableModel model = (DefaultTableModel) TabelKomoditi.getModel();
+   List<Komoditi> komoditiList = komoditiDAO.getAllKomoditi();
+    DefaultTableModel model = (DefaultTableModel) TabelKomoditi.getModel();
 
-        // Debug: Print the number of komoditi retrieved
-        System.out.println("Number of komoditi retrieved: " + komoditiList.size());
+    // Debug: Print the number of komoditi retrieved
+    System.out.println("Number of komoditi retrieved: " + komoditiList.size());
 
-        // Clear existing data
-        model.setRowCount(0);
-
-        // Debug: Print the column names
-        for (int i = 0; i < model.getColumnCount(); i++) {
-            System.out.println("Column name " + i + ": " + model.getColumnName(i));
+    // Sort the list alphabetically based on the name of the Komoditi
+    Collections.sort(komoditiList, new Comparator<Komoditi>() {
+        @Override
+        public int compare(Komoditi k1, Komoditi k2) {
+            return k1.getNama().compareTo(k2.getNama());
         }
+    });
 
-        // Add rows to the table
-        for (Komoditi komoditi : komoditiList) {
-            System.out.println("Adding komoditi to table: " + komoditi.getNama() + ", " + komoditi.getHarga() + ", " + komoditi.getSatuan());
-            model.addRow(new Object[]{komoditi.getNama(), komoditi.getHarga(), komoditi.getSatuan()});
-        }
+    // Clear existing data
+    model.setRowCount(0);
 
-        // Debug: Print the number of rows in the model after population
-        System.out.println("Number of rows in table model: " + model.getRowCount());
+    // Debug: Print the column names
+    for (int i = 0; i < model.getColumnCount(); i++) {
+        System.out.println("Column name " + i + ": " + model.getColumnName(i));
+    }
+
+    // Add rows to the table
+    for (Komoditi komoditi : komoditiList) {
+        System.out.println("Adding komoditi to table: " + komoditi.getNama() + ", " + komoditi.getHarga() + ", " + komoditi.getSatuan());
+        model.addRow(new Object[]{komoditi.getNama(), komoditi.getHarga(), komoditi.getSatuan()});
+    }
+
+    // Debug: Print the number of rows in the model after population
+    System.out.println("Number of rows in table model: " + model.getRowCount());
     }
 
 

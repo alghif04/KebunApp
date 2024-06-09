@@ -19,6 +19,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.RowFilter;
 import javax.swing.table.TableModel;
@@ -542,6 +544,15 @@ private String generateOrderID() {
     }//GEN-LAST:event_comboBoxStatusItemStateChanged
 private void populateDropdownPelanggan() {
     List<Pelanggan> pelangganList = pelangganDAO.getAllPelanggan();
+    
+    // Sort the list alphabetically based on the name of the Pelanggan
+    Collections.sort(pelangganList, new Comparator<Pelanggan>() {
+        @Override
+        public int compare(Pelanggan p1, Pelanggan p2) {
+            return p1.getNama().compareTo(p2.getNama());
+        }
+    });
+
     DefaultComboBoxModel<Pelanggan> model = new DefaultComboBoxModel<>();
     for (Pelanggan pelanggan : pelangganList) {
         model.addElement(pelanggan);

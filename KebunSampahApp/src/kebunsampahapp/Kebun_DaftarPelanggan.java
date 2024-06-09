@@ -9,6 +9,8 @@ import dao.PelangganDAO;
 import entities.Pelanggan;
 
 import java.sql.SQLException;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -239,11 +241,19 @@ public class Kebun_DaftarPelanggan extends javax.swing.JFrame {
 
     }//GEN-LAST:event_formWindowOpened
     private void populateTable() {
-    List<Pelanggan> pelangganList = pelangganDAO.getAllPelanggan();
+     List<Pelanggan> pelangganList = pelangganDAO.getAllPelanggan();
     DefaultTableModel model = (DefaultTableModel) TabelPelanggan.getModel();
 
     // Debug: Print the number of pelanggan retrieved
     System.out.println("Number of pelanggan retrieved: " + pelangganList.size());
+
+    // Sort the list alphabetically based on the name of the Pelanggan
+    Collections.sort(pelangganList, new Comparator<Pelanggan>() {
+        @Override
+        public int compare(Pelanggan p1, Pelanggan p2) {
+            return p1.getNama().compareTo(p2.getNama());
+        }
+    });
 
     // Clear existing data
     model.setRowCount(0);
