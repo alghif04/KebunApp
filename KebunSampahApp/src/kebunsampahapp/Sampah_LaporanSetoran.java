@@ -43,68 +43,211 @@ public class Sampah_LaporanSetoran extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         fromDateChooser = new com.toedter.calendar.JDateChooser();
         toDateChooser = new com.toedter.calendar.JDateChooser();
         generateChartButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel15 = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        SetoranButton11 = new javax.swing.JButton();
+        NasabahButton11 = new javax.swing.JButton();
+        BSISButton11 = new javax.swing.JButton();
+        DaftarHargaButton11 = new javax.swing.JButton();
+        LaporanSetoranButton11 = new javax.swing.JButton();
+        MainMenuButton12 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 204));
 
-        generateChartButton.setText("jButton1");
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Laporan Setoran", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 0, 36))); // NOI18N
+        jPanel2.setOpaque(false);
+
+        generateChartButton.setBackground(new java.awt.Color(0, 51, 255));
+        generateChartButton.setForeground(new java.awt.Color(255, 255, 255));
+        generateChartButton.setText("Filter");
         generateChartButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 generateChartButtonActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("jLabel1");
+        jLabel1.setText("From");
+
+        jLabel2.setText("To");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fromDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(toDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(generateChartButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(15, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(generateChartButton)
+                    .addComponent(toDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fromDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(37, Short.MAX_VALUE))
+        );
+
+        jPanel15.setBackground(new java.awt.Color(204, 255, 204));
+
+        jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel20.setText("Bumi Hijau");
+
+        SetoranButton11.setBackground(new java.awt.Color(204, 255, 0));
+        SetoranButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/images/shopping-cart.png"))); // NOI18N
+        SetoranButton11.setText("Setoran");
+        SetoranButton11.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        SetoranButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SetoranButton11ActionPerformed(evt);
+            }
+        });
+
+        NasabahButton11.setBackground(new java.awt.Color(204, 255, 0));
+        NasabahButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/images/man.png"))); // NOI18N
+        NasabahButton11.setText("Daftar Nasabah");
+        NasabahButton11.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        NasabahButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NasabahButton11ActionPerformed(evt);
+            }
+        });
+
+        BSISButton11.setBackground(new java.awt.Color(204, 255, 0));
+        BSISButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/images/wheat.png"))); // NOI18N
+        BSISButton11.setText("Penjualan ke BSIS");
+        BSISButton11.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        BSISButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BSISButton11ActionPerformed(evt);
+            }
+        });
+
+        DaftarHargaButton11.setBackground(new java.awt.Color(204, 255, 0));
+        DaftarHargaButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/images/tag.png"))); // NOI18N
+        DaftarHargaButton11.setText("Daftar Harga");
+        DaftarHargaButton11.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        DaftarHargaButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DaftarHargaButton11ActionPerformed(evt);
+            }
+        });
+
+        LaporanSetoranButton11.setBackground(new java.awt.Color(204, 255, 0));
+        LaporanSetoranButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/images/seo-report.png"))); // NOI18N
+        LaporanSetoranButton11.setText("Laporan Setoran");
+        LaporanSetoranButton11.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        LaporanSetoranButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LaporanSetoranButton11ActionPerformed(evt);
+            }
+        });
+
+        MainMenuButton12.setBackground(new java.awt.Color(204, 255, 0));
+        MainMenuButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/images/back.png"))); // NOI18N
+        MainMenuButton12.setText("Main Menu");
+        MainMenuButton12.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        MainMenuButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MainMenuButton12ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
+        jPanel15.setLayout(jPanel15Layout);
+        jPanel15Layout.setHorizontalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(NasabahButton11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(BSISButton11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(DaftarHargaButton11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(LaporanSetoranButton11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
+                .addContainerGap(42, Short.MAX_VALUE)
+                .addComponent(jLabel20)
+                .addGap(41, 41, 41))
+            .addComponent(MainMenuButton12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(SetoranButton11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE))
+        );
+        jPanel15Layout.setVerticalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel15Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(116, 116, 116)
+                .addComponent(NasabahButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(BSISButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(DaftarHargaButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LaporanSetoranButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(89, 89, 89)
+                .addComponent(MainMenuButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(39, Short.MAX_VALUE))
+            .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel15Layout.createSequentialGroup()
+                    .addGap(149, 149, 149)
+                    .addComponent(SetoranButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(355, Short.MAX_VALUE)))
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(generateChartButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(63, 63, 63)
-                        .addComponent(fromDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 686, Short.MAX_VALUE)
-                        .addComponent(toDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(59, 59, 59))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(175, 175, 175)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(195, 195, 195)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(216, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jLabel1)
-                .addGap(72, 72, 72)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(toDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fromDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 457, Short.MAX_VALUE)
-                .addComponent(generateChartButton)
-                .addGap(53, 53, 53))
+                .addGap(158, 158, 158)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -122,6 +265,54 @@ java.util.Date fromDateUtil = fromDateChooser.getDate();
         
 // TODO add your handling code here:
     }//GEN-LAST:event_generateChartButtonActionPerformed
+
+    private void SetoranButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SetoranButton11ActionPerformed
+        Sampah_Setoran Sampah_Setoran = new Sampah_Setoran();
+
+        // Set the new window to be visible
+        Sampah_Setoran.setVisible(true);
+
+        // Dispose of the current window (CurrentWindow.java)
+        this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_SetoranButton11ActionPerformed
+
+    private void NasabahButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NasabahButton11ActionPerformed
+        Sampah_DaftarNasabah  Sampah_DaftarNasabah = new  Sampah_DaftarNasabah();
+
+        // Set the new window to be visible
+        Sampah_DaftarNasabah.setVisible(true);
+
+        // Dispose of the current window (CurrentWindow.java)
+        this.dispose();
+    }//GEN-LAST:event_NasabahButton11ActionPerformed
+
+    private void BSISButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSISButton11ActionPerformed
+
+    }//GEN-LAST:event_BSISButton11ActionPerformed
+
+    private void DaftarHargaButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DaftarHargaButton11ActionPerformed
+
+    }//GEN-LAST:event_DaftarHargaButton11ActionPerformed
+
+    private void LaporanSetoranButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LaporanSetoranButton11ActionPerformed
+        Sampah_LaporanSetoran Sampah_LaporanSetoran = new Sampah_LaporanSetoran();
+
+        // Set the new window to be visible
+        Sampah_LaporanSetoran.setVisible(true);
+
+        // Dispose of the current window (CurrentWindow.java)
+        this.dispose();         // TODO add your handling code here:
+    }//GEN-LAST:event_LaporanSetoranButton11ActionPerformed
+
+    private void MainMenuButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MainMenuButton12ActionPerformed
+        MainWindow MainWindow = new MainWindow();
+
+        // Set the new window to be visible
+        MainWindow.setVisible(true);
+
+        // Dispose of the current window (CurrentWindow.java)
+        this.dispose();         // TODO add your handling code here:
+    }//GEN-LAST:event_MainMenuButton12ActionPerformed
 private void generatePieChart(Date fromDate, Date toDate) {
         DefaultPieDataset dataset = new DefaultPieDataset();
         double totalPenerimaan = 0.0; // Initialize total Penerimaan
@@ -216,10 +407,20 @@ private void generatePieChart(Date fromDate, Date toDate) {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BSISButton11;
+    private javax.swing.JButton DaftarHargaButton11;
+    private javax.swing.JButton LaporanSetoranButton11;
+    private javax.swing.JButton MainMenuButton12;
+    private javax.swing.JButton NasabahButton11;
+    private javax.swing.JButton SetoranButton11;
     private com.toedter.calendar.JDateChooser fromDateChooser;
     private javax.swing.JButton generateChartButton;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel15;
+    private javax.swing.JPanel jPanel2;
     private com.toedter.calendar.JDateChooser toDateChooser;
     // End of variables declaration//GEN-END:variables
 }

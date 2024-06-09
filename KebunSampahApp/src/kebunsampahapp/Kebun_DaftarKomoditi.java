@@ -44,20 +44,26 @@ public class Kebun_DaftarKomoditi extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        javax.swing.JLabel jLabel2 = new javax.swing.JLabel();
-        tfNama = new javax.swing.JTextField();
-        javax.swing.JLabel jLabel3 = new javax.swing.JLabel();
-        javax.swing.JLabel jLabel4 = new javax.swing.JLabel();
-        tfHarga = new javax.swing.JTextField();
-        dropdownSatuan = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         TabelKomoditi = new javax.swing.JTable();
         javax.swing.JButton DeleteButton = new javax.swing.JButton();
-        javax.swing.JButton AddKomoditiButton = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        TambahPesananButton = new javax.swing.JButton();
+        DaftarPelangganButton = new javax.swing.JButton();
+        DaftarKomoditiButton = new javax.swing.JButton();
+        LaporanPanenButton = new javax.swing.JButton();
+        LaporanPenjualanButton = new javax.swing.JButton();
+        MainMenuButton = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        javax.swing.JLabel jLabel2 = new javax.swing.JLabel();
+        tfNama = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel3 = new javax.swing.JLabel();
+        tfHarga = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel4 = new javax.swing.JLabel();
+        dropdownSatuan = new javax.swing.JComboBox<>();
         javax.swing.JButton ClearButton = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        javax.swing.JButton BackButton = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
+        javax.swing.JButton AddKomoditiButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -68,17 +74,6 @@ public class Kebun_DaftarKomoditi extends javax.swing.JFrame {
         });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 204));
-
-        jLabel2.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jLabel2.setText("Nama");
-
-        jLabel3.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jLabel3.setText("Harga");
-
-        jLabel4.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jLabel4.setText("Satuan");
-
-        dropdownSatuan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Kg", "pcs" }));
 
         TabelKomoditi.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         TabelKomoditi.setModel(new javax.swing.table.DefaultTableModel(
@@ -109,15 +104,123 @@ public class Kebun_DaftarKomoditi extends javax.swing.JFrame {
             }
         });
 
-        AddKomoditiButton.setBackground(new java.awt.Color(0, 102, 153));
-        AddKomoditiButton.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        AddKomoditiButton.setForeground(new java.awt.Color(255, 255, 255));
-        AddKomoditiButton.setText("+ Tambah");
-        AddKomoditiButton.addActionListener(new java.awt.event.ActionListener() {
+        jPanel3.setBackground(new java.awt.Color(204, 255, 204));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel6.setText("Bumi Hijau");
+
+        TambahPesananButton.setBackground(new java.awt.Color(204, 255, 0));
+        TambahPesananButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/images/shopping-cart.png"))); // NOI18N
+        TambahPesananButton.setText("Tambah Pesanan");
+        TambahPesananButton.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        TambahPesananButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddKomoditiButtonActionPerformed(evt);
+                TambahPesananButtonActionPerformed(evt);
             }
         });
+
+        DaftarPelangganButton.setBackground(new java.awt.Color(204, 255, 0));
+        DaftarPelangganButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/images/man.png"))); // NOI18N
+        DaftarPelangganButton.setText("Daftar Pelanggan");
+        DaftarPelangganButton.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        DaftarPelangganButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DaftarPelangganButtonActionPerformed(evt);
+            }
+        });
+
+        DaftarKomoditiButton.setBackground(new java.awt.Color(204, 255, 0));
+        DaftarKomoditiButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/images/wheat.png"))); // NOI18N
+        DaftarKomoditiButton.setText("Daftar Komoditi");
+        DaftarKomoditiButton.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        DaftarKomoditiButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DaftarKomoditiButtonActionPerformed(evt);
+            }
+        });
+
+        LaporanPanenButton.setBackground(new java.awt.Color(204, 255, 0));
+        LaporanPanenButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/images/report.png"))); // NOI18N
+        LaporanPanenButton.setText("Laporan Panen");
+        LaporanPanenButton.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        LaporanPanenButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LaporanPanenButtonActionPerformed(evt);
+            }
+        });
+
+        LaporanPenjualanButton.setBackground(new java.awt.Color(204, 255, 0));
+        LaporanPenjualanButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/images/seo-report.png"))); // NOI18N
+        LaporanPenjualanButton.setText("Laporan Penjualan");
+        LaporanPenjualanButton.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        LaporanPenjualanButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LaporanPenjualanButtonActionPerformed(evt);
+            }
+        });
+
+        MainMenuButton.setBackground(new java.awt.Color(204, 255, 0));
+        MainMenuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/images/back.png"))); // NOI18N
+        MainMenuButton.setText("Main Menu");
+        MainMenuButton.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        MainMenuButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MainMenuButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(DaftarPelangganButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(DaftarKomoditiButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(LaporanPanenButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(LaporanPenjualanButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(42, Short.MAX_VALUE)
+                .addComponent(jLabel6)
+                .addGap(41, 41, 41))
+            .addComponent(MainMenuButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(TambahPesananButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(116, 116, 116)
+                .addComponent(DaftarPelangganButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(DaftarKomoditiButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LaporanPanenButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LaporanPenjualanButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(89, 89, 89)
+                .addComponent(MainMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(153, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(149, 149, 149)
+                    .addComponent(TambahPesananButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(489, Short.MAX_VALUE)))
+        );
+
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Daftar Komoditi", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 0, 24))); // NOI18N
+        jPanel4.setOpaque(false);
+
+        jLabel2.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jLabel2.setText("Nama");
+
+        jLabel3.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jLabel3.setText("Harga");
+
+        jLabel4.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jLabel4.setText("Satuan");
+
+        dropdownSatuan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Kg", "pcs" }));
 
         ClearButton.setBackground(new java.awt.Color(255, 0, 0));
         ClearButton.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
@@ -129,39 +232,61 @@ public class Kebun_DaftarKomoditi extends javax.swing.JFrame {
             }
         });
 
-        jPanel2.setBackground(new java.awt.Color(0, 153, 0));
-
-        BackButton.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        BackButton.setText("Back");
-        BackButton.addActionListener(new java.awt.event.ActionListener() {
+        AddKomoditiButton.setBackground(new java.awt.Color(0, 102, 153));
+        AddKomoditiButton.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        AddKomoditiButton.setForeground(new java.awt.Color(255, 255, 255));
+        AddKomoditiButton.setText("+ Tambah");
+        AddKomoditiButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BackButtonActionPerformed(evt);
+                AddKomoditiButtonActionPerformed(evt);
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Roboto", 1, 36)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Daftar Komoditi");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(BackButton)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(223, 223, 223)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(285, Short.MAX_VALUE))
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(tfNama, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tfHarga, javax.swing.GroupLayout.Alignment.LEADING)))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dropdownSatuan, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(ClearButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(AddKomoditiButton)))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(BackButton)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(32, Short.MAX_VALUE))
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dropdownSatuan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(tfHarga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ClearButton)
+                            .addComponent(AddKomoditiButton))
+                        .addContainerGap())))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -169,58 +294,30 @@ public class Kebun_DaftarKomoditi extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(tfHarga, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                                .addComponent(tfNama, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(dropdownSatuan, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(ClearButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(AddKomoditiButton)))))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(DeleteButton)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1))
-                .addContainerGap())
+                        .addGap(36, 36, 36)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(DeleteButton)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 717, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(116, 116, 116)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tfNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(dropdownSatuan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfHarga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ClearButton)
-                    .addComponent(AddKomoditiButton))
-                .addGap(19, 19, 19)
+                .addGap(116, 116, 116)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(DeleteButton)
-                .addGap(5, 5, 5)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -278,17 +375,6 @@ if (success) {
 
     }//GEN-LAST:event_AddKomoditiButtonActionPerformed
 
-    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
-    // Create an instance of MainWindow
-    KebunWindow KebunWindow = new KebunWindow();
-
-    // Set the new window to be visible
-    KebunWindow.setVisible(true);
-
-    // Dispose of the current window (CurrentWindow.java)
-    this.dispose();
-    }//GEN-LAST:event_BackButtonActionPerformed
-
     private void DeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteButtonActionPerformed
 // Get the selected row index
 int selectedRow = TabelKomoditi.getSelectedRow();
@@ -329,6 +415,66 @@ if (selectedRow >= 0) {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
      
     }//GEN-LAST:event_formWindowOpened
+
+    private void TambahPesananButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TambahPesananButtonActionPerformed
+        Kebun_TambahPesanan KebunTambahPesanan = new Kebun_TambahPesanan();
+
+        // Set the new window to be visible
+        KebunTambahPesanan.setVisible(true);
+
+        // Dispose of the current window (CurrentWindow.java)
+        this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_TambahPesananButtonActionPerformed
+
+    private void DaftarPelangganButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DaftarPelangganButtonActionPerformed
+        Kebun_DaftarPelanggan Kebun_DaftarPelanggan = new Kebun_DaftarPelanggan();
+
+        // Set the new window to be visible
+        Kebun_DaftarPelanggan.setVisible(true);
+
+        // Dispose of the current window (CurrentWindow.java)
+        this.dispose();
+    }//GEN-LAST:event_DaftarPelangganButtonActionPerformed
+
+    private void DaftarKomoditiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DaftarKomoditiButtonActionPerformed
+        Kebun_DaftarKomoditi Kebun_DaftarKomoditi = new Kebun_DaftarKomoditi();
+
+        // Set the new window to be visible
+        Kebun_DaftarKomoditi.setVisible(true);
+
+        // Dispose of the current window (CurrentWindow.java)
+        this.dispose();         // TODO add your handling code here:
+    }//GEN-LAST:event_DaftarKomoditiButtonActionPerformed
+
+    private void LaporanPenjualanButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LaporanPenjualanButtonActionPerformed
+        Kebun_Laporan Kebun_Laporan = new Kebun_Laporan();
+
+        // Set the new window to be visible
+        Kebun_Laporan.setVisible(true);
+
+        // Dispose of the current window (CurrentWindow.java)
+        this.dispose();         // TODO add your handling code here:
+    }//GEN-LAST:event_LaporanPenjualanButtonActionPerformed
+
+    private void MainMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MainMenuButtonActionPerformed
+        MainWindow MainWindow = new MainWindow();
+
+        // Set the new window to be visible
+        MainWindow.setVisible(true);
+
+        // Dispose of the current window (CurrentWindow.java)
+        this.dispose();         // TODO add your handling code here:
+    }//GEN-LAST:event_MainMenuButtonActionPerformed
+
+    private void LaporanPanenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LaporanPanenButtonActionPerformed
+     Kebun_LaporanPanen Kebun_LaporanPanen = new Kebun_LaporanPanen();
+
+        // Set the new window to be visible
+        Kebun_LaporanPanen.setVisible(true);
+
+        // Dispose of the current window (CurrentWindow.java)
+        this.dispose();         // TODO add your handling code here:   // TODO add your handling code here:        // TODO add your handling code here:
+    }//GEN-LAST:event_LaporanPanenButtonActionPerformed
     private void populateTable() {
    List<Komoditi> komoditiList = komoditiDAO.getAllKomoditi();
     DefaultTableModel model = (DefaultTableModel) TabelKomoditi.getModel();
@@ -392,6 +538,7 @@ if (selectedRow >= 0) {
             java.util.logging.Logger.getLogger(Kebun_DaftarKomoditi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -402,11 +549,18 @@ if (selectedRow >= 0) {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton DaftarKomoditiButton;
+    private javax.swing.JButton DaftarPelangganButton;
+    private javax.swing.JButton LaporanPanenButton;
+    private javax.swing.JButton LaporanPenjualanButton;
+    private javax.swing.JButton MainMenuButton;
     private javax.swing.JTable TabelKomoditi;
+    private javax.swing.JButton TambahPesananButton;
     private javax.swing.JComboBox<String> dropdownSatuan;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField tfHarga;
     private javax.swing.JTextField tfNama;

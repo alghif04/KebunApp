@@ -1,32 +1,51 @@
 package entities;
 
+import java.sql.Date;
+
 public class LaporanPanen {
-    private String namapanen;
-    private String beratpanen;
+    private int panenId;
+    private Date panenTanggal;
+    private String panenKomoditi;
+    private double panenBerat;
 
-    public LaporanPanen(String namapanen, String beratpanen) {
-        this.namapanen = namapanen;
-        this.beratpanen = beratpanen;
+    // Constructor
+    public LaporanPanen(int panenId, Date panenTanggal, String panenKomoditi, double panenBerat) {
+        this.panenId = panenId;
+        this.panenTanggal = panenTanggal;
+        this.panenKomoditi = panenKomoditi;
+        this.panenBerat = panenBerat;
     }
 
-    public String getNamaPanen() {
-        return namapanen;
+    // Getters and Setters
+    public int getPanenId() {
+        return panenId;
     }
 
-    public void setNamaPanen(String namapanen) {
-        this.namapanen = namapanen;
+    public void setPanenId(int panenId) {
+        this.panenId = panenId;
     }
 
-    public String getBeratPanen() {
-        return beratpanen;
+    public Date getPanenTanggal() {
+        return panenTanggal;
     }
 
-    public void setBeratPanen(String beratpanen) {
-        this.beratpanen = beratpanen;
+    public void setPanenTanggal(Date panenTanggal) {
+        this.panenTanggal = panenTanggal;
     }
 
-    @Override
-    public String toString() {
-        return namapanen;
+    public String getPanenKomoditi() {
+        return panenKomoditi;
+    }
+
+    public void setPanenKomoditi(String panenKomoditi) {
+        this.panenKomoditi = panenKomoditi;
+    }
+
+    public double getPanenBerat() {
+        return panenBerat;
+    }
+
+    public void setPanenBerat(double panenBerat) {
+        this.panenBerat = panenBerat;
     }
 }
