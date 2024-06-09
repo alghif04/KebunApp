@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 09 Jun 2024 pada 15.19
--- Versi server: 10.4.28-MariaDB
--- Versi PHP: 8.2.4
+-- Generation Time: Jun 09, 2024 at 11:12 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `detailpesanan`
+-- Table structure for table `detailpesanan`
 --
 
 CREATE TABLE `detailpesanan` (
@@ -36,7 +36,7 @@ CREATE TABLE `detailpesanan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `detailpesanan`
+-- Dumping data for table `detailpesanan`
 --
 
 INSERT INTO `detailpesanan` (`id`, `pesanan_id`, `komoditi_nama`, `komoditi_harga`, `jumlah`) VALUES
@@ -85,7 +85,7 @@ INSERT INTO `detailpesanan` (`id`, `pesanan_id`, `komoditi_nama`, `komoditi_harg
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `harga`
+-- Table structure for table `harga`
 --
 
 CREATE TABLE `harga` (
@@ -96,7 +96,7 @@ CREATE TABLE `harga` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `harga`
+-- Dumping data for table `harga`
 --
 
 INSERT INTO `harga` (`ID`, `Jenis`, `Harga`, `Satuan`) VALUES
@@ -119,7 +119,7 @@ INSERT INTO `harga` (`ID`, `Jenis`, `Harga`, `Satuan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `komoditi`
+-- Table structure for table `komoditi`
 --
 
 CREATE TABLE `komoditi` (
@@ -130,7 +130,7 @@ CREATE TABLE `komoditi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `komoditi`
+-- Dumping data for table `komoditi`
 --
 
 INSERT INTO `komoditi` (`Komoditi_id`, `Komoditi_nama`, `Komoditi_harga`, `Komoditi_satuan`) VALUES
@@ -149,7 +149,28 @@ INSERT INTO `komoditi` (`Komoditi_id`, `Komoditi_nama`, `Komoditi_harga`, `Komod
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `nasabah`
+-- Table structure for table `laporanpanen`
+--
+
+CREATE TABLE `laporanpanen` (
+  `Panen_id` int(11) NOT NULL,
+  `Panen_tanggal` date DEFAULT NULL,
+  `Panen_komoditi` varchar(255) DEFAULT NULL,
+  `Panen_berat` double DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `laporanpanen`
+--
+
+INSERT INTO `laporanpanen` (`Panen_id`, `Panen_tanggal`, `Panen_komoditi`, `Panen_berat`) VALUES
+(2, '2024-06-27', 'Asparagus', 3),
+(3, '2024-06-14', 'Cabe', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nasabah`
 --
 
 CREATE TABLE `nasabah` (
@@ -160,7 +181,7 @@ CREATE TABLE `nasabah` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `nasabah`
+-- Dumping data for table `nasabah`
 --
 
 INSERT INTO `nasabah` (`Nasabah_ID`, `Nasabah_NAMA`, `Nasabah_STATUS`, `Nasabah_NOMOR_RUMAH`) VALUES
@@ -178,28 +199,7 @@ INSERT INTO `nasabah` (`Nasabah_ID`, `Nasabah_NAMA`, `Nasabah_STATUS`, `Nasabah_
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `panen`
---
-
-CREATE TABLE `panen` (
-  `panen_id` int(11) NOT NULL,
-  `nama_panen` varchar(255) DEFAULT NULL,
-  `berat_panen` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data untuk tabel `panen`
---
-
-INSERT INTO `panen` (`panen_id`, `nama_panen`, `berat_panen`) VALUES
-(1, 'bayem', '2'),
-(2, 'Kangkung', '5'),
-(3, 'sawi', '8');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `pelanggan`
+-- Table structure for table `pelanggan`
 --
 
 CREATE TABLE `pelanggan` (
@@ -210,7 +210,7 @@ CREATE TABLE `pelanggan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `pelanggan`
+-- Dumping data for table `pelanggan`
 --
 
 INSERT INTO `pelanggan` (`Pelanggan_id`, `Pelanggan_nama`, `Pelanggan_alamat`, `Pelanggan_notelp`) VALUES
@@ -239,7 +239,7 @@ INSERT INTO `pelanggan` (`Pelanggan_id`, `Pelanggan_nama`, `Pelanggan_alamat`, `
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `penjualan_ke_bsis`
+-- Table structure for table `penjualan_ke_bsis`
 --
 
 CREATE TABLE `penjualan_ke_bsis` (
@@ -252,7 +252,7 @@ CREATE TABLE `penjualan_ke_bsis` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `penjualan_ke_bsis`
+-- Dumping data for table `penjualan_ke_bsis`
 --
 
 INSERT INTO `penjualan_ke_bsis` (`id`, `no_transaksi`, `tanggal`, `total_kg`, `total_biji`, `total_penjualan`) VALUES
@@ -265,7 +265,7 @@ INSERT INTO `penjualan_ke_bsis` (`id`, `no_transaksi`, `tanggal`, `total_kg`, `t
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pesanan`
+-- Table structure for table `pesanan`
 --
 
 CREATE TABLE `pesanan` (
@@ -278,7 +278,7 @@ CREATE TABLE `pesanan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `pesanan`
+-- Dumping data for table `pesanan`
 --
 
 INSERT INTO `pesanan` (`Pesanan_id`, `Pesanan_nama`, `Pesanan_tanggal`, `Pesanan_macamkomoditi`, `Pesanan_totalharga`, `pesanan_status`) VALUES
@@ -306,7 +306,7 @@ INSERT INTO `pesanan` (`Pesanan_id`, `Pesanan_nama`, `Pesanan_tanggal`, `Pesanan
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `setoran`
+-- Table structure for table `setoran`
 --
 
 CREATE TABLE `setoran` (
@@ -320,7 +320,7 @@ CREATE TABLE `setoran` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `setoran`
+-- Dumping data for table `setoran`
 --
 
 INSERT INTO `setoran` (`ID`, `Tanggal_Setor`, `Nama`, `Jenis`, `Harga_Satuan`, `kuantitas`, `Penerimaan`) VALUES
@@ -330,63 +330,77 @@ INSERT INTO `setoran` (`ID`, `Tanggal_Setor`, `Nama`, `Jenis`, `Harga_Satuan`, `
 (4, '2024-06-06', 'Mayhikal', 'HVS', 1800, 6, 10800),
 (5, '2024-06-15', 'Rohan', 'Majalah', 700, 2.5, 1750),
 (6, '2024-06-07', 'Rizky', 'Selang', 400, 2.5, 1000),
-(7, '2024-06-06', 'Lukman', 'Kresek', 300, 7.5, 2250);
+(7, '2024-06-06', 'Lukman', 'Kresek', 300, 7.5, 2250),
+(8, '2024-06-22', 'Bayu', 'Kardus', 10000, 2, 20000),
+(9, '2024-06-29', 'Rio', 'Kresek', 300, 2, 600);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `harga`
+-- Indexes for table `harga`
 --
 ALTER TABLE `harga`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indeks untuk tabel `nasabah`
+-- Indexes for table `laporanpanen`
+--
+ALTER TABLE `laporanpanen`
+  ADD PRIMARY KEY (`Panen_id`);
+
+--
+-- Indexes for table `nasabah`
 --
 ALTER TABLE `nasabah`
   ADD PRIMARY KEY (`Nasabah_ID`);
 
 --
--- Indeks untuk tabel `penjualan_ke_bsis`
+-- Indexes for table `penjualan_ke_bsis`
 --
 ALTER TABLE `penjualan_ke_bsis`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `setoran`
+-- Indexes for table `setoran`
 --
 ALTER TABLE `setoran`
   ADD PRIMARY KEY (`ID`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `harga`
+-- AUTO_INCREMENT for table `harga`
 --
 ALTER TABLE `harga`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT untuk tabel `nasabah`
+-- AUTO_INCREMENT for table `laporanpanen`
+--
+ALTER TABLE `laporanpanen`
+  MODIFY `Panen_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `nasabah`
 --
 ALTER TABLE `nasabah`
   MODIFY `Nasabah_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
--- AUTO_INCREMENT untuk tabel `penjualan_ke_bsis`
+-- AUTO_INCREMENT for table `penjualan_ke_bsis`
 --
 ALTER TABLE `penjualan_ke_bsis`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT untuk tabel `setoran`
+-- AUTO_INCREMENT for table `setoran`
 --
 ALTER TABLE `setoran`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
