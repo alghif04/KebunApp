@@ -427,11 +427,23 @@ public class Sampah_DaftarNasabah extends javax.swing.JFrame {
     }//GEN-LAST:event_NasabahButtonActionPerformed
 
     private void BSISButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSISButtonActionPerformed
- 
+         Sampah_penjualan_ke_bsis Sampah_penjualan_ke_bsis = new Sampah_penjualan_ke_bsis();
+
+        // Set the new window to be visible
+        Sampah_penjualan_ke_bsis.setVisible(true);
+
+        // Dispose of the current window (CurrentWindow.java)
+        this.dispose();
     }//GEN-LAST:event_BSISButtonActionPerformed
 
     private void DaftarHargaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DaftarHargaButtonActionPerformed
-  
+ Sampah_DaftarHarga Sampah_DaftarHarga = new Sampah_DaftarHarga();
+
+        // Set the new window to be visible
+        Sampah_DaftarHarga.setVisible(true);
+
+        // Dispose of the current window (CurrentWindow.java)
+        this.dispose();         // TODO add your handling code here:  
     }//GEN-LAST:event_DaftarHargaButtonActionPerformed
 
     private void LaporanSetoranButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LaporanSetoranButtonActionPerformed

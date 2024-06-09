@@ -35,39 +35,33 @@ public class Sampah_DaftarHarga extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.JPanel jPanel1 = new javax.swing.JPanel();
-        javax.swing.JLabel jLabel2 = new javax.swing.JLabel();
-        BtnBack = new javax.swing.JButton();
-        javax.swing.JPanel jPanel2 = new javax.swing.JPanel();
-        javax.swing.JScrollPane jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
         TabelDaftarHarga = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
-        javax.swing.JLabel jLabel1 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         tfJenis = new javax.swing.JTextField();
-        javax.swing.JLabel jLabel3 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         tfHarga = new javax.swing.JTextField();
-        javax.swing.JLabel jLabel4 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         DropdownSatuan = new javax.swing.JComboBox<>();
-        javax.swing.JButton BtnClear = new javax.swing.JButton();
-        javax.swing.JButton BtnAdd = new javax.swing.JButton();
-        javax.swing.JButton BtnDelete = new javax.swing.JButton();
+        BtnClear = new javax.swing.JButton();
+        BtnAdd = new javax.swing.JButton();
+        BtnDelete = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        SetoranButton = new javax.swing.JButton();
+        NasabahButton = new javax.swing.JButton();
+        BSISButton = new javax.swing.JButton();
+        DaftarHargaButton = new javax.swing.JButton();
+        LaporanSetoranButton = new javax.swing.JButton();
+        MainMenuButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(204, 255, 204));
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Bumi");
-
-        BtnBack.setBackground(new java.awt.Color(204, 255, 0));
-        BtnBack.setText("< Main Menu");
-        BtnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnBackActionPerformed(evt);
-            }
-        });
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 204));
 
@@ -171,31 +165,142 @@ public class Sampah_DaftarHarga extends javax.swing.JFrame {
             }
         });
 
+        jPanel4.setBackground(new java.awt.Color(204, 255, 204));
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel9.setText("Bumi Hijau");
+
+        SetoranButton.setBackground(new java.awt.Color(204, 255, 0));
+        SetoranButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/images/shopping-cart.png"))); // NOI18N
+        SetoranButton.setText("Setoran");
+        SetoranButton.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        SetoranButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SetoranButtonActionPerformed(evt);
+            }
+        });
+
+        NasabahButton.setBackground(new java.awt.Color(204, 255, 0));
+        NasabahButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/images/man.png"))); // NOI18N
+        NasabahButton.setText("Daftar Nasabah");
+        NasabahButton.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        NasabahButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NasabahButtonActionPerformed(evt);
+            }
+        });
+
+        BSISButton.setBackground(new java.awt.Color(204, 255, 0));
+        BSISButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/images/wheat.png"))); // NOI18N
+        BSISButton.setText("Penjualan ke BSIS");
+        BSISButton.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        BSISButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BSISButtonActionPerformed(evt);
+            }
+        });
+
+        DaftarHargaButton.setBackground(new java.awt.Color(204, 255, 0));
+        DaftarHargaButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/images/tag.png"))); // NOI18N
+        DaftarHargaButton.setText("Daftar Harga");
+        DaftarHargaButton.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        DaftarHargaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DaftarHargaButtonActionPerformed(evt);
+            }
+        });
+
+        LaporanSetoranButton.setBackground(new java.awt.Color(204, 255, 0));
+        LaporanSetoranButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/images/seo-report.png"))); // NOI18N
+        LaporanSetoranButton.setText("Laporan Setoran");
+        LaporanSetoranButton.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        LaporanSetoranButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LaporanSetoranButtonActionPerformed(evt);
+            }
+        });
+
+        MainMenuButton1.setBackground(new java.awt.Color(204, 255, 0));
+        MainMenuButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/images/back.png"))); // NOI18N
+        MainMenuButton1.setText("Main Menu");
+        MainMenuButton1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        MainMenuButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MainMenuButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(NasabahButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(BSISButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(DaftarHargaButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(LaporanSetoranButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(42, Short.MAX_VALUE)
+                .addComponent(jLabel9)
+                .addGap(41, 41, 41))
+            .addComponent(MainMenuButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(SetoranButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(116, 116, 116)
+                .addComponent(NasabahButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(BSISButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(DaftarHargaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LaporanSetoranButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(89, 89, 89)
+                .addComponent(MainMenuButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(202, Short.MAX_VALUE))
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGap(149, 149, 149)
+                    .addComponent(SetoranButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(355, Short.MAX_VALUE)))
+        );
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(353, 353, 353)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(165, 165, 165)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(264, 264, 264)
-                        .addComponent(BtnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(32, 32, 32)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(BtnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addComponent(BtnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
-                .addGap(109, 109, 109))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45)
+                        .addComponent(BtnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -203,87 +308,165 @@ public class Sampah_DaftarHarga extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BtnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(BtnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 769, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 717, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 2, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void BtnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDeleteActionPerformed
+        // Mendapatkan baris yang dipilih dari tabel
+        int selectedRow = TabelDaftarHarga.getSelectedRow();
+
+        // Memastikan ada baris yang dipilih sebelum melanjutkan
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Pilih baris yang akan dihapus.", "Peringatan", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        // Mengambil data dari baris yang dipilih
+        String jenis = (String) TabelDaftarHarga.getValueAt(selectedRow, 0);
+        double harga = (double) TabelDaftarHarga.getValueAt(selectedRow, 1);
+        String satuan = (String) TabelDaftarHarga.getValueAt(selectedRow, 2);
+
+        // Memanggil DAO untuk menghapus data
+        HargaDao hargaDao = new HargaDao();
+        boolean deleted = hargaDao.deleteHargaByDetails(jenis, harga, satuan);
+
+        // Menampilkan pesan berhasil atau gagal
+        if (deleted) {
+            JOptionPane.showMessageDialog(this, "Data berhasil dihapus.", "Informasi", JOptionPane.INFORMATION_MESSAGE);
+
+            // Refresh tabel setelah menghapus data
+            populateTable();
+        } else {
+            JOptionPane.showMessageDialog(this, "Gagal menghapus data.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_BtnDeleteActionPerformed
+
     private void BtnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAddActionPerformed
         // Mengambil nilai dari JTextField dan JComboBox
-    String jenis = tfJenis.getText();
-    String hargaStr = tfHarga.getText();
-    String satuan = (String) DropdownSatuan.getSelectedItem();
+        String jenis = tfJenis.getText();
+        String hargaStr = tfHarga.getText();
+        String satuan = (String) DropdownSatuan.getSelectedItem();
 
-    // Validasi input
-    if (jenis.isEmpty() || hargaStr.isEmpty() || satuan == null || satuan.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Semua field harus diisi.", "Peringatan", JOptionPane.WARNING_MESSAGE);
-        return;
-    }
-
-    try {
-        // Parsing hargaStr menjadi double
-        double harga = Double.parseDouble(hargaStr);
-
-        // Melakukan koneksi ke database dan menambahkan data
-        try (Connection connection = DatabaseConnection.getConnection()) {
-            String query = "INSERT INTO Harga (Jenis, Harga, Satuan) VALUES (?, ?, ?)";
-            try (PreparedStatement statement = connection.prepareStatement(query)) {
-                statement.setString(1, jenis);
-                statement.setDouble(2, harga);
-                statement.setString(3, satuan);
-
-                int rowsInserted = statement.executeUpdate();
-                if (rowsInserted > 0) {
-                    JOptionPane.showMessageDialog(this, "Data berhasil ditambahkan.", "Informasi", JOptionPane.INFORMATION_MESSAGE);
-                    
-                    // Membersihkan field input setelah berhasil menambahkan data
-                    tfJenis.setText("");
-                    tfHarga.setText("");
-                    DropdownSatuan.setSelectedIndex(0);
-                }
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(this, "Terjadi kesalahan saat menambahkan data: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            e.printStackTrace();
+        // Validasi input
+        if (jenis.isEmpty() || hargaStr.isEmpty() || satuan == null || satuan.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Semua field harus diisi.", "Peringatan", JOptionPane.WARNING_MESSAGE);
+            return;
         }
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(this, "Harga harus berupa angka yang valid.", "Peringatan", JOptionPane.WARNING_MESSAGE);
-    }
 
-    // Refresh tabel setelah menambahkan data
-    populateTable();
+        try {
+            // Parsing hargaStr menjadi double
+            double harga = Double.parseDouble(hargaStr);
+
+            // Melakukan koneksi ke database dan menambahkan data
+            try (Connection connection = DatabaseConnection.getConnection()) {
+                String query = "INSERT INTO Harga (Jenis, Harga, Satuan) VALUES (?, ?, ?)";
+                try (PreparedStatement statement = connection.prepareStatement(query)) {
+                    statement.setString(1, jenis);
+                    statement.setDouble(2, harga);
+                    statement.setString(3, satuan);
+
+                    int rowsInserted = statement.executeUpdate();
+                    if (rowsInserted > 0) {
+                        JOptionPane.showMessageDialog(this, "Data berhasil ditambahkan.", "Informasi", JOptionPane.INFORMATION_MESSAGE);
+
+                        // Membersihkan field input setelah berhasil menambahkan data
+                        tfJenis.setText("");
+                        tfHarga.setText("");
+                        DropdownSatuan.setSelectedIndex(0);
+                    }
+                }
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(this, "Terjadi kesalahan saat menambahkan data: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                e.printStackTrace();
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Harga harus berupa angka yang valid.", "Peringatan", JOptionPane.WARNING_MESSAGE);
+        }
+
+        // Refresh tabel setelah menambahkan data
+        populateTable();
     }//GEN-LAST:event_BtnAddActionPerformed
 
-    private void BtnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBackActionPerformed
+    private void BtnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnClearActionPerformed
+        // Mengosongkan JTextField dan JComboBox
+        tfJenis.setText("");
+        tfHarga.setText("");
+        DropdownSatuan.setSelectedIndex(0);
+    }//GEN-LAST:event_BtnClearActionPerformed
+
+    private void SetoranButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SetoranButtonActionPerformed
+        Sampah_Setoran Sampah_Setoran = new Sampah_Setoran();
+
+        // Set the new window to be visible
+        Sampah_Setoran.setVisible(true);
+
+        // Dispose of the current window (CurrentWindow.java)
+        this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_SetoranButtonActionPerformed
+
+    private void NasabahButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NasabahButtonActionPerformed
+        Sampah_DaftarNasabah  Sampah_DaftarNasabah = new  Sampah_DaftarNasabah();
+
+        // Set the new window to be visible
+        Sampah_DaftarNasabah.setVisible(true);
+
+        // Dispose of the current window (CurrentWindow.java)
+        this.dispose();
+    }//GEN-LAST:event_NasabahButtonActionPerformed
+
+    private void BSISButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSISButtonActionPerformed
+        Sampah_penjualan_ke_bsis Sampah_penjualan_ke_bsis = new Sampah_penjualan_ke_bsis();
+
+        // Set the new window to be visible
+        Sampah_penjualan_ke_bsis.setVisible(true);
+
+        // Dispose of the current window (CurrentWindow.java)
+        this.dispose();   
+    }//GEN-LAST:event_BSISButtonActionPerformed
+
+    private void DaftarHargaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DaftarHargaButtonActionPerformed
+  Sampah_DaftarHarga Sampah_DaftarHarga = new Sampah_DaftarHarga();
+
+        // Set the new window to be visible
+        Sampah_DaftarHarga.setVisible(true);
+
+        // Dispose of the current window (CurrentWindow.java)
+        this.dispose();         // TODO add your handling code here:
+    }//GEN-LAST:event_DaftarHargaButtonActionPerformed
+
+    private void LaporanSetoranButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LaporanSetoranButtonActionPerformed
+        Sampah_LaporanSetoran Sampah_LaporanSetoran = new Sampah_LaporanSetoran();
+
+        // Set the new window to be visible
+        Sampah_LaporanSetoran.setVisible(true);
+
+        // Dispose of the current window (CurrentWindow.java)
+        this.dispose();         // TODO add your handling code here:
+    }//GEN-LAST:event_LaporanSetoranButtonActionPerformed
+
+    private void MainMenuButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MainMenuButton1ActionPerformed
         MainWindow MainWindow = new MainWindow();
 
         // Set the new window to be visible
@@ -291,44 +474,7 @@ public class Sampah_DaftarHarga extends javax.swing.JFrame {
 
         // Dispose of the current window (CurrentWindow.java)
         this.dispose();         // TODO add your handling code here:
-    }//GEN-LAST:event_BtnBackActionPerformed
-
-    private void BtnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnClearActionPerformed
-        // Mengosongkan JTextField dan JComboBox
-    tfJenis.setText("");
-    tfHarga.setText("");
-    DropdownSatuan.setSelectedIndex(0);
-    }//GEN-LAST:event_BtnClearActionPerformed
-
-    private void BtnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDeleteActionPerformed
-        // Mendapatkan baris yang dipilih dari tabel
-    int selectedRow = TabelDaftarHarga.getSelectedRow();
-    
-    // Memastikan ada baris yang dipilih sebelum melanjutkan
-    if (selectedRow == -1) {
-        JOptionPane.showMessageDialog(this, "Pilih baris yang akan dihapus.", "Peringatan", JOptionPane.WARNING_MESSAGE);
-        return;
-    }
-    
-    // Mengambil data dari baris yang dipilih
-    String jenis = (String) TabelDaftarHarga.getValueAt(selectedRow, 0);
-    double harga = (double) TabelDaftarHarga.getValueAt(selectedRow, 1);
-    String satuan = (String) TabelDaftarHarga.getValueAt(selectedRow, 2);
-    
-    // Memanggil DAO untuk menghapus data
-    HargaDao hargaDao = new HargaDao();
-    boolean deleted = hargaDao.deleteHargaByDetails(jenis, harga, satuan);
-    
-    // Menampilkan pesan berhasil atau gagal
-    if (deleted) {
-        JOptionPane.showMessageDialog(this, "Data berhasil dihapus.", "Informasi", JOptionPane.INFORMATION_MESSAGE);
-        
-        // Refresh tabel setelah menghapus data
-        populateTable();
-    } else {
-        JOptionPane.showMessageDialog(this, "Gagal menghapus data.", "Error", JOptionPane.ERROR_MESSAGE);
-    }
-    }//GEN-LAST:event_BtnDeleteActionPerformed
+    }//GEN-LAST:event_MainMenuButton1ActionPerformed
 
     private void populateTable() {
         DefaultTableModel model = (DefaultTableModel) TabelDaftarHarga.getModel();
@@ -389,10 +535,26 @@ public class Sampah_DaftarHarga extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnBack;
+    private javax.swing.JButton BSISButton;
+    private javax.swing.JButton BtnAdd;
+    private javax.swing.JButton BtnClear;
+    private javax.swing.JButton BtnDelete;
+    private javax.swing.JButton DaftarHargaButton;
     private javax.swing.JComboBox<String> DropdownSatuan;
+    private javax.swing.JButton LaporanSetoranButton;
+    private javax.swing.JButton MainMenuButton1;
+    private javax.swing.JButton NasabahButton;
+    private javax.swing.JButton SetoranButton;
     private javax.swing.JTable TabelDaftarHarga;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField tfHarga;
     private javax.swing.JTextField tfJenis;
     // End of variables declaration//GEN-END:variables

@@ -16,6 +16,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Vector;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -32,6 +33,9 @@ public class Kebun_DaftarKomoditi extends javax.swing.JFrame {
         initComponents();
         komoditiDAO = new KomoditiDAO();
         populateTable();
+      
+
+
     }
 
     /**

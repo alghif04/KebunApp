@@ -363,7 +363,7 @@ public class Sampah_Setoran extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void DeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteButtonActionPerformed
-         int selectedRow = TabelSetoran.getSelectedRow();
+     int selectedRow = TabelSetoran.getSelectedRow();
 
     if (selectedRow == -1) {
         // Tidak ada baris yang dipilih, tampilkan pesan error
@@ -373,7 +373,8 @@ public class Sampah_Setoran extends javax.swing.JFrame {
 
     // Mendapatkan nilai dari baris yang dipilih
     String tanggal = (String) TabelSetoran.getValueAt(selectedRow, 1); // Misalkan tanggal ada di kolom kedua
-    int nomorRumah = (int) TabelSetoran.getValueAt(selectedRow, 2); // Misalkan nomor rumah ada di kolom ketiga
+    String nomorRumahStr = (String) TabelSetoran.getValueAt(selectedRow, 2); // Misalkan nomor rumah ada di kolom ketiga sebagai String
+    int nomorRumah = Integer.parseInt(nomorRumahStr); // Convert the String to an int
     String jenis = (String) TabelSetoran.getValueAt(selectedRow, 3); // Misalkan jenis ada di kolom keempat
 
     // Menghapus data dari database
@@ -386,6 +387,7 @@ public class Sampah_Setoran extends javax.swing.JFrame {
 
     // Menampilkan pesan sukses
     JOptionPane.showMessageDialog(this, "Data setoran deleted successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+
     }//GEN-LAST:event_DeleteButtonActionPerformed
 
     private void ClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearButtonActionPerformed
@@ -441,11 +443,23 @@ public class Sampah_Setoran extends javax.swing.JFrame {
     }//GEN-LAST:event_NasabahButton11ActionPerformed
 
     private void BSISButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSISButton11ActionPerformed
+        Sampah_penjualan_ke_bsis Sampah_penjualan_ke_bsis = new Sampah_penjualan_ke_bsis();
 
+        // Set the new window to be visible
+        Sampah_penjualan_ke_bsis.setVisible(true);
+
+        // Dispose of the current window (CurrentWindow.java)
+        this.dispose();
     }//GEN-LAST:event_BSISButton11ActionPerformed
 
     private void DaftarHargaButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DaftarHargaButton11ActionPerformed
+ Sampah_DaftarHarga Sampah_DaftarHarga = new Sampah_DaftarHarga();
 
+        // Set the new window to be visible
+        Sampah_DaftarHarga.setVisible(true);
+
+        // Dispose of the current window (CurrentWindow.java)
+        this.dispose();         // TODO add your handling code here:
     }//GEN-LAST:event_DaftarHargaButton11ActionPerformed
 
     private void LaporanSetoranButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LaporanSetoranButton11ActionPerformed

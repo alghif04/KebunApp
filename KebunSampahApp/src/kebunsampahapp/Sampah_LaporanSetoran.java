@@ -287,11 +287,23 @@ java.util.Date fromDateUtil = fromDateChooser.getDate();
     }//GEN-LAST:event_NasabahButton11ActionPerformed
 
     private void BSISButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSISButton11ActionPerformed
+        Sampah_penjualan_ke_bsis Sampah_penjualan_ke_bsis = new Sampah_penjualan_ke_bsis();
 
+        // Set the new window to be visible
+        Sampah_penjualan_ke_bsis.setVisible(true);
+
+        // Dispose of the current window (CurrentWindow.java)
+        this.dispose();
     }//GEN-LAST:event_BSISButton11ActionPerformed
 
     private void DaftarHargaButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DaftarHargaButton11ActionPerformed
+ Sampah_DaftarHarga Sampah_DaftarHarga = new Sampah_DaftarHarga();
 
+        // Set the new window to be visible
+        Sampah_DaftarHarga.setVisible(true);
+
+        // Dispose of the current window (CurrentWindow.java)
+        this.dispose();         // TODO add your handling code here:
     }//GEN-LAST:event_DaftarHargaButton11ActionPerformed
 
     private void LaporanSetoranButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LaporanSetoranButton11ActionPerformed
