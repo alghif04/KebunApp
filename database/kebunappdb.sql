@@ -196,6 +196,29 @@ INSERT INTO `pesanan` (`Pesanan_id`, `Pesanan_nama`, `Pesanan_tanggal`, `Pesanan
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `Harga`
+--
+CREATE TABLE Harga (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    Jenis VARCHAR(50),
+    Harga DECIMAL(10, 2),
+    Satuan ENUM('Kg', 'Pcs')
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `Harga`
+--
+
+INSERT INTO Harga (Jenis, Harga, Satuan)
+VALUES 
+    ('Kardus Bagus', 5000, 'Kg'),
+    ('Kardus Jelek', 3000, 'Kg'),
+    ('Majalah', 2000, 'Pcs'),
+    ('Koran', 1500, 'Kg');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `penjualan`
 --
 
