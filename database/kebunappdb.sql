@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 08, 2024 at 02:33 PM
+-- Generation Time: Jun 09, 2024 at 05:43 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -85,6 +85,40 @@ INSERT INTO `detailpesanan` (`id`, `pesanan_id`, `komoditi_nama`, `komoditi_harg
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `harga`
+--
+
+CREATE TABLE `harga` (
+  `ID` int(11) NOT NULL,
+  `Jenis` varchar(50) DEFAULT NULL,
+  `Harga` decimal(10,2) DEFAULT NULL,
+  `Satuan` enum('Kg','Pcs') DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `harga`
+--
+
+INSERT INTO `harga` (`ID`, `Jenis`, `Harga`, `Satuan`) VALUES
+(1, 'Kardus', 10000.00, 'Kg'),
+(7, 'Koran', 3500.00, 'Pcs'),
+(8, 'HVS', 1800.00, 'Kg'),
+(9, 'Kertas Buram', 800.00, 'Kg'),
+(10, 'Majalah', 700.00, 'Kg'),
+(11, 'Duplek', 400.00, 'Kg'),
+(12, 'Selang', 400.00, 'Kg'),
+(13, 'Kresek', 300.00, 'Kg'),
+(14, 'Botol Kecap', 300.00, 'Pcs'),
+(15, 'Botol Bensin', 800.00, 'Pcs'),
+(16, 'Pecahan Kaca', 50.00, 'Kg'),
+(17, 'Gelas', 1500.00, 'Kg'),
+(18, 'Kaleng', 1000.00, 'Kg'),
+(19, 'Kemasan Saset', 50.00, 'Kg'),
+(20, 'Kabel Listrik', 3000.00, 'Kg');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `komoditi`
 --
 
@@ -155,6 +189,32 @@ INSERT INTO `pelanggan` (`Pelanggan_id`, `Pelanggan_nama`, `Pelanggan_alamat`, `
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `penjualan_ke_bsis`
+--
+
+CREATE TABLE `penjualan_ke_bsis` (
+  `id` int(11) NOT NULL,
+  `no_transaksi` varchar(50) NOT NULL,
+  `tanggal` date NOT NULL,
+  `total_kg` decimal(10,2) NOT NULL,
+  `total_biji` int(11) NOT NULL,
+  `total_penjualan` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `penjualan_ke_bsis`
+--
+
+INSERT INTO `penjualan_ke_bsis` (`id`, `no_transaksi`, `tanggal`, `total_kg`, `total_biji`, `total_penjualan`) VALUES
+(3, '22081010289', '2024-06-09', 100.00, 50, 10000.00),
+(4, '22081010300', '2024-06-09', 90.00, 50, 15000.00),
+(5, '22081010310', '2024-06-09', 91.00, 55, 20000.00),
+(6, '22081010190', '2024-06-09', 190.00, 100, 28000.00),
+(7, '22081010100', '2024-06-09', 100.00, 5, 29000.00);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `pesanan`
 --
 
@@ -193,104 +253,37 @@ INSERT INTO `pesanan` (`Pesanan_id`, `Pesanan_nama`, `Pesanan_tanggal`, `Pesanan
 ('8/Kebun/06-2024', 'Anto Suprapto', '2024-06-15', 2, 92500, 'lunas'),
 ('9/Kebun/06-2024', 'Citra Purnama', '2024-06-16', 2, 38750, 'belum lunas');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `Harga`
---
-CREATE TABLE Harga (
-    ID INT AUTO_INCREMENT PRIMARY KEY,
-    Jenis VARCHAR(50),
-    Harga DECIMAL(10, 2),
-    Satuan ENUM('Kg', 'Pcs')
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `Harga`
---
-
-INSERT INTO Harga (Jenis, Harga, Satuan)
-VALUES 
-    ('Kardus Bagus', 5000, 'Kg'),
-    ('Kardus Jelek', 3000, 'Kg'),
-    ('Majalah', 2000, 'Pcs'),
-    ('Koran', 1500, 'Kg');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `penjualan`
---
-
-CREATE TABLE `penjualan` (
-  `id` INT AUTO_INCREMENT PRIMARY KEY,
-  `no_transaksi` VARCHAR(50) NOT NULL,
-  `tanggal` DATE NOT NULL,
-  `total_kg` DECIMAL(10,2) NOT NULL,
-  `total_biji` INT NOT NULL,
-  `total_penjualan` DECIMAL(10,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `detailpesanan`
+-- Indexes for table `harga`
 --
-ALTER TABLE `detailpesanan`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `pesanan_id` (`pesanan_id`);
+ALTER TABLE `harga`
+  ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `komoditi`
+-- Indexes for table `penjualan_ke_bsis`
 --
-ALTER TABLE `komoditi`
-  ADD PRIMARY KEY (`Komoditi_id`);
-
---
--- Indexes for table `pelanggan`
---
-ALTER TABLE `pelanggan`
-  ADD PRIMARY KEY (`Pelanggan_id`);
-
---
--- Indexes for table `pesanan`
---
-ALTER TABLE `pesanan`
-  ADD PRIMARY KEY (`Pesanan_id`);
+ALTER TABLE `penjualan_ke_bsis`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `detailpesanan`
+-- AUTO_INCREMENT for table `harga`
 --
-ALTER TABLE `detailpesanan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+ALTER TABLE `harga`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT for table `komoditi`
+-- AUTO_INCREMENT for table `penjualan_ke_bsis`
 --
-ALTER TABLE `komoditi`
-  MODIFY `Komoditi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
---
--- AUTO_INCREMENT for table `pelanggan`
---
-ALTER TABLE `pelanggan`
-  MODIFY `Pelanggan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `detailpesanan`
---
-ALTER TABLE `detailpesanan`
-  ADD CONSTRAINT `detailpesanan_ibfk_1` FOREIGN KEY (`pesanan_id`) REFERENCES `pesanan` (`Pesanan_id`);
+ALTER TABLE `penjualan_ke_bsis`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
